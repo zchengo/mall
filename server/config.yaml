@@ -1,0 +1,29 @@
+# 启动端口号
+server:
+  post: 8000
+
+# MySQL数据源配置
+mysql:
+  username: root
+  password: 123456
+  url: tcp(localhost:3306)/imall?charset=utf8&parseTime=True&loc=Local
+
+# 图片路径配置
+upload:
+  savePath: /Users/zchengo/Downloads/resource/images/
+  accessUrl: http://localhost:8000/image/
+
+# JWT配置
+jwt:
+  signingKey: z3d6k8v0n3w7m9sa1fd0u09h
+
+# 微信小程序配置
+code2Session:
+  appId: wx3cb7b0s2793390f63
+  appSecret: 86d8z38cac01ff375b2676d35f65e021
+
+# 问题反馈配置
+feedback:
+  qqSmtp: smtp.qq.com
+  qqEmail: 1933757688@qq.com
+  qqEmailSecret: jjstmwtidhwhxhzc
