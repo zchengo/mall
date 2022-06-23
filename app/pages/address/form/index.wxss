@@ -1,0 +1,20 @@
+page{
+  background-color: #f7f8fa;
+}
+.field_label{
+  color: #353535 !important;
+}
+.field_icon{
+  font-size: 35rpx !important;
+  padding: 0 10rpx;
+  color: #707172 !important;
+}
+.custom_cell{
+  margin-top: 20rpx !important;
+}
+.custom_button{
+  width: 92%;
+  margin: 50rpx 4% 80rpx;
+  font-weight: 420;
+  font-size: 30rpx !important;
+}

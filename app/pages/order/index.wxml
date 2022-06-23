@@ -1,0 +1,35 @@
+<view class="header">
+  <van-tabs active="{{ active }}" bind:change="onChange" color="#12CAFF" line-width="40rpx" line-height="10rpx" tab-class="custom-tab" custom-class="custom-tabs" bind:change="tabsChange">
+    <van-tab wx:for="{{tabList}}" wx:key="{{item}}" title="{{item}}">
+      <view wx:if="{{orderList.length > 0}}" class="order-card-container">
+        <view class="order-card" wx:for="{{orderList}}" wx:key="{{item.id}}">
+          <view class="order-card_header">
+            <view>订单号 {{item.id}}</view>
+            <view style="color: #12CAFF;font-weight: 400;" wx:if="{{item.status == 1}}">待付款</view>
+            <view style="color: #4e4e4e;font-weight: 400;" wx:if="{{item.status == 2}}">已取消</view>
+            <view style="color: #12CAFF;font-weight: 400;" wx:if="{{item.status == 3}}">已付款</view>
+            <view style="color: #12CAFF;font-weight: 400;" wx:if="{{item.status == 4}}">配送中</view>
+            <view style="color: #12CAFF;font-weight: 400;" wx:if="{{item.status == 5}}">已完成</view>
+          </view>
+          <view class="order-card_content">
+            <view class="order-card_goods">
+              <view wx:for="{{item.goodsItem}}" wx:key="{{item.id}}">
+                <image src="{{item.imageUrl}}" class="order-card_goods_image" />
+              </view>
+            </view>
+            <view class="order-card_goods_value">
+              <view class="order-card_goods_price"><text style="font-size: 28rpx;padding-right:8rpx;">¥</text>{{item.totalPrice}}</view>
+              <view class="order-card_goods_count">x{{item.goodsCount}} 件</view>
+            </view>
+          </view>
+          <view class="order-card_footer">
+            <van-button wx:if="{{item.status == 1}}" id="{{item.id}}" bind:click="confirmCancelOrder" custom-class="van-button" plain round>取消订单</van-button>
+            <van-button wx:if="{{item.status == 1}}" custom-class="van-button" color="#12CAFF" round>我要付款</van-button>
+          </view>
+        </view>
+      </view>
+      <van-empty wx:else description="暂无订单" />
+    </van-tab>
+  </van-tabs>
+</view>
+<van-dialog id="van-dialog" />

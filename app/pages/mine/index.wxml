@@ -1,0 +1,10 @@
+<view class="mine_header">
+  <image class="avatar" src="/assets/avatar.png"/>
+  <View class="nickname">HI~早上好！</View>
+</view>
+<van-grid column-num="3" custom-class="custom-grid" border="{{false}}" icon-size="30">
+  <view class="grid_title">我的工具</view>
+  <van-grid-item icon="/assets/address.png" url="/pages/address/list/index" text="收货地址" />
+  <van-grid-item icon="/assets/service.png" text="联系客服" />
+  <van-grid-item icon="/assets/feedback.png" url="/pages/feedback/index" text="问题反馈" />
+</van-grid>

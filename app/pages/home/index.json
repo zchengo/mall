@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index",
+    "van-card": "@vant/weapp/card/index",
+    "van-tree-select": "@vant/weapp/tree-select/index",
+    "van-search": "@vant/weapp/search/index",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-stepper": "@vant/weapp/stepper/index",
+    "van-checkbox": "@vant/weapp/checkbox/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-checkbox-group": "@vant/weapp/checkbox-group/index"
+  },
+  "navigationStyle": "custom",
+  "backgroundColor": "#fff"
+}

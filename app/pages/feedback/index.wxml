@@ -1,0 +1,6 @@
+<!-- 问题反馈 -->
+<van-cell-group>
+  <van-field value="{{ content }}" label-class="field_label" label="内容" type="textarea" size="large" placeholder="您要反馈的内容" maxlength="20" autosize show-word-limit/>
+  <van-field value="{{ email }}" label-class="field_label" label="邮箱" size="large" placeholder="您的邮箱" border="{{ false }}"/>
+</van-cell-group>
+<van-button custom-class="custom_button" color="#12CAFF" bindtap="submitForm" round>提交反馈</van-button>

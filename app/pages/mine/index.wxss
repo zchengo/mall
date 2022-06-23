@@ -1,0 +1,43 @@
+/* pages/mine/index.wxss */
+page{
+  background-color: #f7f8fa;
+}
+.mine_header{
+  top: 0;
+  width: 88%;
+  height: 500rpx;
+  position: fixed;
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+  padding: 30rpx 6% 50rpx;
+  z-index: 1;
+  background-image: linear-gradient(#12CAFF, #f7f8fa);
+}
+.avatar{
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex;
+  background-color: white;
+  border-radius: 4.5rem;
+}
+.nickname{
+  font-size: 42rpx;
+  font-weight: 500;
+  color: #323333;
+  padding: 0 30rpx;
+  letter-spacing: 1px;
+}
+.custom-grid{
+  top: 430rpx;
+  z-index: 2;
+  margin: 0 35rpx;
+  border-radius: 30rpx !important;
+  background-color: white;
+}
+.grid_title{
+  font-weight: 450;
+  font-size: 32rpx;
+  letter-spacing: 0.3px;
+  padding: 20rpx 45rpx;
+}

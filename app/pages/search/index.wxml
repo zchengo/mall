@@ -1,0 +1,21 @@
+<!--pages/search/index.wxml-->
+<van-search value="{{ keyWord }}" placeholder="请输入搜索关键词" bind:change="onChange" bind:search="searchGoods" shape="round" />
+<view style="padding: 20rpx 30rpx;">
+  <view wx:if="{{goodsList.length > 0}}" class="goods-card" wx:for="{{goodsList}}" wx:key="{{item.id}}" id="{{item.id}}" bindtap="checkGoodsDetail">
+    <image src="{{item.imageUrl}}" class="goods-card-image" />
+    <View style="display: flex;padding: 0 10rpx;flex-direction: column;flex: 2;">
+      <View class="goods-card-title">{{item.title}}</View>
+      <View class="goods-card-dec">月售 {{item.sales}}</View>
+      <View class="goods_card_data">
+        <view class="goods-card-price">
+          <text style="font-size: 35rpx;padding-right: 5rpx;">¥</text>
+          <text>{{item.price}}</text>
+        </view>
+        <view>
+          <view class="goods_plus_icon"></view>
+        </view>
+      </View>
+    </View>
+  </view>
+  <van-empty wx:if="{{goodsList.length == 0}}" image="search" description="没有找到你想要的商品"/>
+</view>

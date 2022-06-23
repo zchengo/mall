@@ -1,0 +1,262 @@
+page{
+  background-color: #f7f8fa;
+}
+/* 商品详情样式 */
+.back_icon{
+  top: 110rpx !important;
+  left: 32rpx !important;
+  padding: 12rpx;
+  font-size: 30rpx !important;
+  position: fixed !important;
+  color: #e9e9e9 !important;
+  background-color: #262727;
+  opacity: 0.7;
+  border-radius: 50rpx;
+}
+.goods_info{
+  margin: 20rpx 30rpx 0;
+  padding: 24rpx;
+  background-color: white;
+  border-radius: 30rpx;
+  font-family: Avenir-Heavy,PingFang SC,Helvetica Neue,Arial,sans-serif;
+}
+.goods_info_title{
+  font-weight: 600;
+  font-size: 35rpx;
+  color: #333333;
+}
+.goods_info_price{
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+}
+.price_value{
+  color: #ee0a24;
+  font-size: 45rpx;
+  font-weight: 600;
+}
+.goods_detail{
+  margin: 20rpx 30rpx 0;
+  padding: 24rpx;
+  background-color: white;
+  border-radius: 30rpx;
+}
+.goods_detail_title{
+  font-size: 28rpx;
+  font-weight: 550;
+  padding: 0 0 20rpx;
+  color: #505050;
+}
+.goods_detail_view{
+  width: 100%;
+  display: inline-flex;
+  font-size: 25rpx;
+}
+.goods_detail_param{
+  width: 20%;
+  color: #b1b2b3;
+}
+.goods_detail_value{
+  width: 80%;
+  color: #606161;
+}
+.goods_plus_icon{
+  background-color: #12CAFF;
+  border:0;
+  box-sizing:border-box;
+  color: white;
+  display:inline-block;
+  height: 28px;
+  width: 28px;
+  margin:1px;
+  padding: 4px;
+  width: 45rpx;
+  height: 45rpx;
+  border-radius: 50rpx;
+  position: relative;
+  vertical-align: middle;
+}
+.goods_plus_icon:before{
+  height: 1px;
+  width: 9px;
+}
+.goods_plus_icon:after{
+  height: 9px;
+  width: 1px;
+}
+.goods_plus_icon:after,.goods_plus_icon:before{
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  margin: auto;
+  position: absolute;
+  background-color: currentColor;
+}
+.goods_van_stepper_minus{
+  background: none !important;
+  width: 45rpx !important;
+  height: 45rpx !important;
+  color: #12CAFF !important;
+  border: 2rpx solid #12CAFF !important;
+  border-radius: 50rpx !important;
+}
+.goods_van_stepper_input{
+  background: none !important;
+}
+.goods_van_stepper_plus{
+  width: 45rpx !important;
+  height: 45rpx !important;
+  background-color: #12CAFF !important;
+  color: white !important;
+  border-radius: 50rpx !important;
+}
+
+
+.footer{
+  width: 100%;
+  position: fixed;
+  height: 200rpx;
+  z-index: 101;
+  bottom: 0rpx;
+  background-color: #ffffff;
+}
+/* 购物车卡片样式 */
+.cart_card{
+  width: 94%;
+  height: 100rpx;
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+  padding: 20rpx 3%;
+}
+.cart_icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 160rpx;
+  height: 100rpx;
+  position: relative;
+}
+.cart_icon_info{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  border-radius: 7px;
+  right: 30rpx;
+  top: 10rpx;
+  font-weight: 450;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #FFF5F4;
+  background-color: #FF4B33;
+}
+.cart_dec{
+  display: flex;
+  flex-direction: column;
+  height: 75rpx;
+  justify-content: space-between;
+}
+.cart_price{
+  color: #f52206;
+  font-size: 36rpx;
+  font-family: Avenir-Heavy,PingFang SC,Helvetica Neue,Arial,sans-serif;
+}
+.cart_info{
+  font-size: 20rpx;
+  color: #262727;
+  letter-spacing: 0.2px;
+}
+.cart_button{
+  width: 280rpx;
+  height: 80rpx;
+  background-color: #12CAFF;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  color: white;
+  font-weight: 500;
+  margin-right: 20rpx;
+  border-radius: 50rpx;
+  background-image: linear-gradient(to right, #30d1fa , #03b4fa);
+}
+.cart_button::after{
+  border: none;
+}
+/* 购物车弹出框样式 */
+.van_popup{
+  padding: 0 35rpx !important;
+  height: fit-content !important;
+  overflow-y: unset !important;
+}
+.popup_head{
+  width: 100%;
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  padding: 20rpx 0;
+  height: 40rpx;
+  justify-content: space-between;
+}
+.popup_head_label{
+  font-size: 28rpx;
+  color: #000000;
+  font-weight: 500;
+}
+.popup_head_label-text{
+  font-size: 25rpx;
+  color: #666666;
+}
+.popup_head_clear{
+  color: #666666;
+  font-size: 26rpx;
+  padding: 0 3rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-items: center;
+}
+.popup_content{
+  /* height: 620rpx; */
+  max-height: 620rpx;
+  overflow-y: scroll;
+}
+.popup_van_checkbox_label{
+  width: 100% !important;
+}
+.popup_van_card{
+  background: none !important;
+}
+.popup_van_card_thumb{
+  width: 150rpx !important;
+  height: 150rpx !important;
+}
+.popup_van_card_title{
+  margin-top: 5rpx !important;
+  font-size: 26rpx !important;
+}
+.popup_van_stepper_minus{
+  background: none !important;
+  width: 35rpx !important;
+  height: 35rpx !important;
+  color: #12CAFF !important;
+  border: 2rpx solid #12CAFF !important;
+  border-radius: 50rpx !important;
+}
+.popup_van_stepper_input{
+  background: none !important;
+}
+.popup_van_stepper_plus{
+  width: 35rpx !important;
+  height: 35rpx !important;
+  background-color: #12CAFF !important;
+  color: white !important;
+  border-radius: 50rpx !important;
+}
+.popup_footer{
+  height: 200rpx;
+}

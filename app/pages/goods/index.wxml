@@ -1,0 +1,64 @@
+<!--pages/goods/index.wxml-->
+<!-- 商品详情 -->
+<page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}">
+  <van-icon custom-class="back_icon" name="arrow-left" color="#fff" bindtap="backToHome" />
+  <image src="{{goods.imageUrl}}" style="width: {{windowWidth}}px; height: {{windowWidth}}px;" />
+  <view class="goods_info">
+    <View class="goods_info_title">{{goods.title}}</View>
+    <View class="goods_info_price">
+      <view class="price_value"><text style="font-size: 35rpx;padding-right: 8rpx;">¥</text>{{goods.price}}</view>
+      <view>
+        <view wx:if="{{goodsCount == 0}}" class="goods_plus_icon" bindtap="addGoods" />
+        <van-stepper wx:else value="{{ goodsCount }}" minus-class="goods_van_stepper_minus" input-class="goods_van_stepper_input" plus-class="goods_van_stepper_plus" min="0" bind:change="stepperChange"/>
+      </view>
+    </View>
+  </view>
+  <view class="goods_detail">
+    <view class="goods_detail_title">商品详情</view>
+    <view class="goods_detail_view">
+      <view class="goods_detail_param">名称</view>
+      <view class="goods_detail_value">{{goods.name}}</view>
+    </view>
+    <view class="goods_detail_view">
+      <view class="goods_detail_param">备注</view>
+      <view class="goods_detail_value">{{goods.remark}}</view>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="cart_card">
+      <View class="cart_icon" bindtap="showCartPopup">
+        <image wx:if="{{totalGoodsCount == 0}}" src="/assets/cart-o.png" style="width: 90rpx;height: 90rpx;" />
+    <view wx:else>
+      <image src="/assets/cart.png" style="width: 90rpx;height: 90rpx;" />
+      <view class="cart_icon_info">{{totalGoodsCount}}</view>
+    </view>
+      </View>
+      <view class="cart_dec">
+        <view class="cart_price"><text style="font-size: 24rpx;padding-right:8rpx;">¥</text>{{totalPrice}}</view>
+        <view class="cart_info">预计30分钟送达</view>
+      </view>
+      <button class="cart_button" bindtap="settleAccounts">去结算</button>
+    </view>
+  </view>
+</page-meta>
+<!-- 购物车弹出框 -->
+<van-popup custom-class="van_popup" show="{{ show }}" position="bottom" round>
+  <view class="popup_head">
+    <van-checkbox value="{{ checked }}" bind:change="onChange" checked-color="#12CAFF" icon-size="32rpx">
+      <View class="popup_head_label">全选<text class="popup_head_label-text">（已选3件商品）</text></View>
+    </van-checkbox>
+    <view class="popup_head_clear" bindtap="clearCart"><van-icon name="delete-o" color="#666666" size="30rpx" />清空</view>
+  </view>
+  <view class="popup_content">
+    <van-checkbox-group value="{{ checked }}" bind:change="onChange">
+      <van-checkbox name="{{item.id}}" wx:for="{{goodsItem}}" wx:key="{{item.id}}" label-class="popup_van_checkbox_label" checked-color="#12CAFF" icon-size="32rpx">
+          <van-card custom-class="popup_van_card" thumb-class="popup_van_card_thumb" title-class="popup_van_card_title" price="{{item.price}}" title="{{item.title}}" thumb="{{item.imageUrl}}">
+            <view slot="num" style="float: right;margin-top: -12rpx;">
+              <van-stepper value="{{ item.count }}" minus-class="popup_van_stepper_minus" input-class="popup_van_stepper_input" plus-class="popup_van_stepper_plus" bind:change="stepperChange"/>
+            </view>
+          </van-card>
+      </van-checkbox>
+    </van-checkbox-group>
+  </view>
+  <view class="popup_footer" />
+</van-popup>

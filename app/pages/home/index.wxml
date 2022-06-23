@@ -1,0 +1,64 @@
+<!-- pages/home/index.wxml -->
+<view class="header">
+  <swiper indicator-dots="{{true}}" autoplay="{{true}}" style="height: 350rpx;">
+    <block wx:for="{{bannerList}}">
+      <swiper-item>
+        <image src="{{item.bannerImage}}" id="{{item.goodsIds}}" bindtap="onClickBanner" style="width: 100%;height: 100%;" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+<view class="content">
+  <View style="padding: 15rpx 0;">
+    <van-search value="{{ keyWord }}" disabled="{{true}}" placeholder="请输入搜索关键词" shape="round" bindtap="toSearch"/>
+  </View>
+  <van-tree-select items="{{ options }}" id="{{ items.id }}" active-id="{{ activeId }}" bind:click-nav="changeOption">
+    <view slot="content">
+      <view class="goods-card" wx:for="{{goodsList}}" wx:key="{{item.id}}" id="{{item.id}}" bindtap="checkGoodsDetail">
+        <image src="{{item.imageUrl}}" class="goods-card-image"/>
+        <View style="display: flex;padding: 0 10rpx;flex-direction: column;flex: 1.4;">
+          <View class="goods-card-title">{{item.title}}</View>
+          <View class="goods-card-dec">月售 {{item.sales}}</View>
+          <View class="goods_card_data">
+            <view class="goods-card-price">
+              <text style="font-size: 28rpx;padding-right: 5rpx;">¥</text>
+              <text>{{item.price}}</text>
+            </view>
+            <view><view class="goods_plus_icon"></view></view>
+          </View>
+        </View>
+      </view>
+    </view>
+  </van-tree-select>
+</view>
+<view class="home_footer">
+  <View class="cart_icon">
+    <image wx:if="{{totalGoodsCount == 0}}" src="/assets/cart-o.png" style="width: 90rpx;height: 90rpx;" />
+    <view wx:else bindtap="showCartPopup">
+      <image src="/assets/cart.png" style="width: 90rpx;height: 90rpx;" />
+      <view class="cart_icon_info">{{totalGoodsCount}}</view>
+    </view>
+  </View>
+  <view class="cart_dec">
+    <view class="cart_price"><text style="font-size: 28rpx;padding-right:8rpx;">¥</text>{{totalPrice}}</view>
+    <view class="cart_info">预计30分钟送达</view>
+  </view>
+  <button class="cart_button" bindtap="settleAccounts">去结算</button>
+</view>
+<!-- 购物车弹出框 -->
+<van-popup custom-class="van_popup" show="{{ show }}" position="bottom" zIndex="2" round>
+  <view class="popup_head">
+    <van-checkbox value="{{ true }}" bind:change="onChange" checked-color="#12CAFF" icon-size="32rpx">
+      <View class="popup_head_label">全选<text class="popup_head_label-text">（已选{{totalGoodsCount}}件商品）</text></View>
+    </van-checkbox>
+    <view class="popup_head_clear" bindtap="clearCart"><van-icon name="delete-o" color="#666666" size="30rpx" />清空</view>
+  </view>
+  <view class="popup_content">
+    <van-card custom-class="popup_van_card" wx:for="{{goodsItem}}" wx:key="{{item.id}}" thumb-class="popup_van_card_thumb" title-class="popup_van_card_title" price="{{item.price}}" title="{{item.title}}" thumb="{{item.imageUrl}}">
+            <view slot="num" style="float: right;margin-top: -12rpx;">
+              <van-stepper value="{{ item.count }}" minus-class="popup_van_stepper_minus" input-class="popup_van_stepper_input" plus-class="popup_van_stepper_plus" bind:change="stepperChange"/>
+            </view>
+          </van-card>
+  </view>
+  <view class="popup_footer" />
+</van-popup>

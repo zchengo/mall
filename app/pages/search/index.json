@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
+    "van-empty": "@vant/weapp/empty/index"
+  },
+  "backgroundColor": "#f7f8fa",
+  "navigationBarTitleText": "搜索"
+}

@@ -1,0 +1,54 @@
+<!--pages/order/confirm/index.wxml-->
+<view wx:if="{{showView}}">
+<van-cell size="large" use-label-slot center>
+      <view slot="title">
+        <view>张先生<text style="margin-left: 20rpx;">13364809604</text></view>
+      </view>
+      <view slot="label" class="cell_label">
+        <view>
+          <van-tag color="#c6edf8" wx:if="{{item.isDefault === 1}}" text-color="#02bef1">默认</van-tag>{{' ' + '北京市' + ' ' + '朝阳区' + ' ' + '和平街道20号楼205' + ' '}}
+        </view>
+      </view>
+      <van-icon slot="right-icon" name="arrow" class="custom-icon" />
+</van-cell>
+
+<van-card custom-class="goods_van_card" title-class="goods_van_card_title" wx:for="{{goodsItem}}" wx:key="{{item.id}}" id="{{item.id}}" price="{{item.price}}" title="{{item.title}}" num="{{item.count}}" thumb="{{item.imageUrl}}" bindtap="checkGoodsDetail" />
+
+<van-cell-group>
+  <van-cell title="商品总额" value="" border="{{ false }}">
+    <view style="font-weight: 600;font-size: 30rpx;color: #3e3f3f;">¥{{totalPrice}}</view>
+  </van-cell>
+  <van-cell title="订单备注" value="选填" border="{{ false }}">
+    <van-icon slot="right-icon" name="arrow" class="custom-icon" />
+  </van-cell>
+</van-cell-group>
+<!-- 提交订单 -->
+<view class="footer">
+		<view class="order_price">
+			<view><text style="font-size: 35rpx;padding-right:8rpx;">¥</text>{{totalPrice}}</view>
+		</view>
+    <view>
+      <button class="order_submit_btn" bindtap="submitOrder">提交订单</button>
+    </view>
+</view>
+<!-- 支付密码弹出框 -->
+<van-dialog
+  use-slot
+  bind:confirm="confirmPay"
+  title="请输入支付密码"
+  show="{{ show }}"
+  show-cancel-button
+  bind:close="onClose"
+  width="650rpx">
+  <view class="dialog_content">
+    <input class="pwd_input" type="password" wx:for="{{6}}" />
+  </view>
+</van-dialog>
+</view>
+<!-- 支付成功 -->
+<view wx:else class="pay_success">
+  <image src="/assets/success.png" style="width: 180rpx;height: 180rpx;"/>
+  <view class="prompt_text">支付成功</view>
+  <view><button class="back_home" bindtap="backToHome">返回首页</button></view>
+</view>
+

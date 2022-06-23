@@ -1,0 +1,99 @@
+/* pages/order/confirm/index.wxss */
+page{
+  background-color: #f7f8fa;
+}
+.van-swipe-cell__right {
+  display: flex;
+  width: 65px;
+  height: 44px;
+  font-size: 15px;
+  line-height: 44px;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: content-box;
+  color: #fff;
+  justify-content: center;
+  background-color: #f44;
+}
+.goods_van_card{
+  background: #fff !important;
+}
+.goods_van_card_title{
+  font-size: 28rpx !important;
+  margin-top: 8rpx !important;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  padding: 20rpx 30rpx;
+  background: #fff;
+  height: 112rpx;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.order_price{
+  color: #fa4126;
+  font-weight: bold;
+  font-size: 50rpx;
+  line-height: 88rpx;
+}
+.order_submit_btn{
+  width: 280rpx;
+  height: 80rpx;
+  background-color: #12CAFF;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  color: white;
+  font-weight: 500;
+  /* margin-right: 20rpx; */
+  border-radius: 50rpx;
+  background-image: linear-gradient(to right, #30d1fa , #03b4fa);
+}
+.dialog_content{
+  width: 100%;
+  display: inline-flex;
+  padding: 30rpx 0;
+  justify-content: center;
+}
+.pwd_input{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 10rpx;
+  border-radius: 10rpx;
+  background-color: #f5f6f7;
+  text-align: center;
+  font-weight: 450;
+  font-size: 35rpx;
+}
+.pay_success{
+  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 150rpx 0;
+}
+.prompt_text{
+  color: #12CAFF;
+  font-size: 45rpx;
+  font-weight: 600;
+  line-height: 80rpx;
+}
+.back_home{
+  width: 280rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  color: white;
+  border-radius: 50rpx;
+  margin: 50rpx 0;
+  background-image: linear-gradient(to right, #30d1fa , #03b4fa);
+}
+.back_home::after{
+  border: none;
+}

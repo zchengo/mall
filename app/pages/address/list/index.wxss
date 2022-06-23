@@ -1,0 +1,54 @@
+page{
+  background-color: #f7f8fa;
+}
+.van-cell__title{
+  flex: 3 !important;
+  font-weight: 550;
+  color: rgb(62, 63, 63);
+  padding: 10rpx 0 !important;
+  font-size: 32rpx !important;
+  letter-spacing: 0.3px;
+}
+.van-cell__value{
+  flex:1 !important;
+}
+.cell_label{
+  padding: 10rpx 0;
+  font-size: 28rpx;
+  font-weight: 410;
+}
+.van-swipe-cell__right {
+  display: flex;
+  width: 65px;
+  height: 44px;
+  font-size: 15px;
+  line-height: 44px;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: content-box;
+  color: #fff;
+  justify-content: center;
+  background-color: #f44;
+}
+.footer_button{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+}
+.custom_button{
+  width: 92%;
+  margin: 50rpx 4% 80rpx;
+  font-weight: 420;
+  font-size: 30rpx !important;
+}
+.footer{
+  width: 100%;
+  bottom: 0;
+  position: relative;
+  padding: 50rpx 0 150rpx ;
+  text-align: center;
+  font-size: 25rpx;
+  letter-spacing: 1px;
+  color: #727474;
+}

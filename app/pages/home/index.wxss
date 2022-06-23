@@ -1,0 +1,298 @@
+/* pages/home/index.wxss */
+page {
+  background-color: #fff;
+}
+
+.header {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  height: 350rpx;
+}
+
+.content {
+  position: fixed;
+  width: 100%;
+  top: 340rpx;
+  bottom: 0;
+  background: #fff;
+  border-radius: 15rpx 15rpx 0 0;
+}
+
+.custom-van-tab {
+  font-size: 32rpx !important;
+  flex: 1 !important;
+}
+
+.van-tree-select{
+  display: flex;
+  height: 1130rpx !important;
+  overflow: scroll;
+}
+.van-tree-select__nav{
+  text-align: center;
+}
+.van-sidebar-item{
+  padding: 0 !important;
+  margin: 0 !important;
+  position: relative !important;
+  border: none !important;
+  height: auto !important;
+  top: 20px;
+}
+.van-sidebar-item__text{
+  line-height: 65rpx !important;
+  box-sizing: content-box !important;
+  position: relative !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  font-size: 30rpx !important;
+}
+.van-sidebar-item__text::before{
+  content: "";
+  top: -5px;
+  height: 18rpx !important;
+  width: 100% !important;
+  position: relative !important;
+  display: flex !important;
+  border-radius: 0 0 15px 0 !important;
+  background-color: #f7f8fa;
+}
+.van-sidebar-item__text::after{
+  content: "";
+  height: 18rpx !important;
+  width: 100% !important;
+  display: flex;
+  bottom: -5px;
+  position: relative !important;
+  display: inline-block !important;
+  border-radius: 0 15px 0 0 !important;
+  background-color: #f7f8fa;
+}
+.van-tree-select__content{
+  padding: 0 12rpx !important;
+  flex: 3 !important;
+}
+.goods-card{
+  height: auto;
+  width: 100%;
+  padding: 8rpx;
+  display: inline-flex;
+  border-radius: 20rpx;
+  background: none;
+}
+.goods-card-image{
+  flex: 1;
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 15rpx;
+}
+.goods-card-title{
+  flex: 1;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #272727;
+  line-height: 32rpx;
+  margin: 8rpx 0;
+}
+.goods-card-dec{
+  flex: 3;
+  color: #646566;
+  font-size: 22rpx;
+  line-height: 30rpx;
+}
+.goods_card_data{
+  flex: 1;
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+  padding-right: 8rpx;
+  justify-content: space-between;
+}
+.goods-card-price{
+  color: #fa381a;
+  font-weight: 550;
+  font-size: 35rpx;
+}
+.goods_plus_icon{
+  background-color: #12CAFF;
+  border:0;
+  box-sizing:border-box;
+  color: white;
+  display:inline-block;
+  height: 28px;
+  width: 28px;
+  margin:1px;
+  padding: 4px;
+  width: 42rpx;
+  height: 42rpx;
+  border-radius: 50rpx;
+  position:relative;
+  vertical-align:middle;
+}
+.goods_plus_icon:before{height:1px;width:9px}
+.goods_plus_icon:after{height:9px;width:1px}
+.goods_plus_icon:after,.goods_plus_icon:before{
+  bottom: 0;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  position: absolute;
+  background-color: currentColor;
+}
+/* 首页底部，购物车卡片样式 */
+.home_footer{
+  position: fixed;
+  height: 120rpx;
+  width: 100%;
+  display: inline-flex;
+  bottom: 0;
+  background-color: #fff;
+  z-index: 3;
+  border-top: 1px solid #fafdfd;
+  border-radius: 30rpx 30rpx 0 0;
+  justify-items: center;
+  align-items: center;
+  padding-bottom: 160rpx;
+  justify-content: space-around;
+}
+.cart_card{
+  position: fixed;
+  width: 94%;
+  display: inline-flex;
+  background-color: #fff;
+  background-color: #f52206;
+  bottom: 180rpx;
+  margin: 0 3%;
+  z-index: 3;
+  padding-top: 20rpx;
+}
+.cart_icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 185rpx;
+  height: 100rpx;
+  position: relative;
+}
+.cart_icon_info{
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  border-radius: 7px;
+  right: 30rpx;
+  top: 10rpx;
+  font-weight: 450;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #FFF5F4;
+  background-color: #FF4B33;
+}
+.cart_dec{
+  display: flex;
+  flex-direction: column;
+  height: 75rpx;
+  justify-content: space-between;
+}
+.cart_price{
+  color: #f52206;
+  font-size: 36rpx;
+  font-family: Avenir-Heavy,PingFang SC,Helvetica Neue,Arial,sans-serif;
+}
+.cart_info{
+  font-size: 20rpx;
+  color: #262727;
+  letter-spacing: 0.2px;
+}
+.cart_button{
+  width: 280rpx;
+  height: 80rpx;
+  background-color: #12CAFF;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  color: white;
+  font-weight: 500;
+  margin-right: 20rpx;
+  border-radius: 50rpx;
+  background-image: linear-gradient(to right, #30d1fa , #03b4fa);
+}
+.cart_button::after{
+  border: none;
+}
+/* 购物车弹出框样式 */
+.van_popup{
+  padding: 0 35rpx !important;
+  height: fit-content !important;
+  overflow-y: unset !important;
+}
+.popup_head{
+  width: 100%;
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  padding: 20rpx 0;
+  height: 40rpx;
+  justify-content: space-between;
+}
+.popup_head_label{
+  font-size: 28rpx;
+  color: #000000;
+  font-weight: 500;
+}
+.popup_head_label-text{
+  font-size: 25rpx;
+  color: #666666;
+}
+.popup_head_clear{
+  color: #666666;
+  font-size: 26rpx;
+  padding: 0 3rpx;
+  display: inline-flex;
+  align-items: center;
+  justify-items: center;
+}
+.popup_content{
+  max-height: 620rpx;
+  overflow-y: scroll;
+}
+.popup_van_checkbox_label{
+  width: 100% !important;
+}
+.popup_van_card{
+  background: none !important;
+}
+.popup_van_card_thumb{
+  width: 150rpx !important;
+  height: 150rpx !important;
+}
+.popup_van_card_title{
+  margin-top: 5rpx !important;
+  font-size: 26rpx !important;
+}
+.popup_van_stepper_minus{
+  background: none !important;
+  width: 35rpx !important;
+  height: 35rpx !important;
+  color: #12CAFF !important;
+  border: 2rpx solid #12CAFF !important;
+  border-radius: 50rpx !important;
+}
+.popup_van_stepper_input{
+  background: none !important;
+}
+.popup_van_stepper_plus{
+  width: 35rpx !important;
+  height: 35rpx !important;
+  background-color: #12CAFF !important;
+  color: white !important;
+  border-radius: 50rpx !important;
+}
+.popup_footer{
+  height: 265rpx;
+}

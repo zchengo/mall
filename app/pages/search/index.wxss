@@ -1,0 +1,68 @@
+/* pages/search/index.wxss */
+.goods-card{
+  height: auto;
+  width: 100%;
+  padding: 8rpx;
+  display: inline-flex;
+  border-radius: 20rpx;
+  background: none;
+}
+.goods-card-image{
+  flex: 1;
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 20rpx;
+}
+.goods-card-title{
+  flex: 1;
+  font-size: 35rpx;
+  font-weight: 500;
+  color: #272727;
+  line-height: 32rpx;
+  margin: 8rpx 0;
+}
+.goods-card-dec{
+  flex: 3;
+  color: #646566;
+  font-size: 28rpx;
+  line-height: 30rpx;
+}
+.goods_card_data{
+  flex: 1;
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+  padding-right: 8rpx;
+  justify-content: space-between;
+}
+.goods-card-price{
+  color: #fa381a;
+  font-weight: 550;
+  font-size: 45rpx;
+}
+.goods_plus_icon{
+  background-color: #12CAFF;
+  border:0;
+  box-sizing:border-box;
+  color: white;
+  display:inline-block;
+  margin:1px;
+  padding: 4px;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50rpx;
+  position:relative;
+  vertical-align:middle;
+}
+.goods_plus_icon:before{height:1px;width:9px}
+.goods_plus_icon:after{height:9px;width:1px}
+.goods_plus_icon:after,.goods_plus_icon:before{
+  bottom: 0;
+  content: "";
+  left: 0;
+  right: 0;
+  top: 0;
+  margin: auto;
+  position: absolute;
+  background-color: currentColor;
+}

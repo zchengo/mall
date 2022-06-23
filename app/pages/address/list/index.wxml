@@ -1,0 +1,25 @@
+<!-- 收货地址列表 -->
+<van-swipe-cell wx:for="{{ addressList }}" wx:key="{{item.id}}" right-width="{{ 65 }}">
+    <van-cell size="large" use-label-slot center>
+      <view slot="title">
+        <view>{{item.name}}<text style="margin-left: 20rpx;">{{item.mobile}}</text></view>
+      </view>
+      <view slot="label" class="cell_label">
+        <view>
+          <van-tag color="#c6edf8" wx:if="{{item.isDefault === 1}}" text-color="#02bef1">默认</van-tag>{{' ' + item.province + ' ' + item.city + ' ' + item.district + ' ' + item.detailedAddress}}
+        </view>
+      </view>
+      <view style="padding: 10rpx 24rpx;">
+        <van-icon id="{{item.id}}" bindtap="toEditForm" name="edit" size="50rpx" />
+      </view>
+    </van-cell>
+  <view slot="right" id="{{item.id}}" bindtap="onClickDelete">删除</view>
+</van-swipe-cell>
+<view class="footer_button">
+  <van-button custom-class="custom_button" bindtap="toAddForm" icon="plus" color="#12CAFF" round>新建收货地址</van-button>
+</view>
+<View style="margin-top: 300rpx;">
+  <van-empty wx:if="{{showEmpty}}" description="您还没有添加地址哦" />
+</View>
+<van-dialog id="van-dialog" />
+<View class="footer" />

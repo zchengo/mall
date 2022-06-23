@@ -1,0 +1,12 @@
+page{
+  background-color: #f7f8fa;
+}
+.field_label{
+  color: #353535 !important;
+}
+.custom_button{
+  width: 92%;
+  margin: 50rpx 4% 80rpx;
+  font-weight: 420;
+  font-size: 30rpx !important;
+}
