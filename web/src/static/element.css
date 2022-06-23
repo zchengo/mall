@@ -1,0 +1,75 @@
+/* 修改 Element Plus 默认样式 */
+.el-input__inner {
+    background-color: #F2F4F7;
+    border-color: #F2F4F7;
+}
+
+.el-input__inner:focus {
+    border-color: #409EFF;
+}
+
+.el-input .el-input__count .el-input__count-inner {
+    background: #F2F4F7;
+}
+
+.el-input-group__append, .el-input-group__prepend {
+    background-color: #F2F4F7;
+    border: none;
+}
+
+.el-textarea__inner {
+    background-color: #F2F4F7;
+}
+
+.el-textarea .el-input__count {
+    background: #F2F4F7;
+}
+
+.el-dialog {
+    border-radius: 10px;
+}
+
+/*.el-dialog__body {*/
+/*    height: 460px;*/
+/*    overflow-y: scroll;*/
+/*}*/
+
+.el-upload{
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 16px;
+}
+
+.el-upload--picture-card {
+    background-color: #F2F4F7;
+    border: none;
+}
+
+.el-upload--picture-card{
+    width: 100px;
+    height: 100px;
+    margin-top: 0;
+    font-size: 16px !important;
+}
+
+.el-upload-list--picture-card .el-upload-list__item{
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 16px;
+}
+
+.el-upload-list--picture-card .el-upload-list__item-thumbnail{
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    font-size: 16px;
+}
+
+.el-table__header tr, .el-table__header th {
+    background-color: #eff6ff !important;
+    font-weight: 450 !important;
+    color: #627a94 !important;
+    border-bottom: none !important;
+}
