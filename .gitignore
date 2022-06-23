@@ -1,0 +1,14 @@
+### node
+node_modules
+/dist
+
+miniprogram_npm
+
+### IDEA ###
+.idea
+
+### MacOS ###
+.DS_Store
+
+### VS Code ###
+.vscode
