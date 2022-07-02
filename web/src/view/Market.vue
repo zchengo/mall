@@ -125,10 +125,7 @@
           <el-date-picker v-model="market.overTime" value-format="YYYY-MM-DD HH:mm:ss" type="datetime" placeholder="请选择结束时间"/>
         </el-form-item>
         <el-form-item label="关联商品" :required="true">
-          <el-button type="primary" :icon="Plus" @click="addGoods"/>
-        </el-form-item>
-        <el-form-item label="活动商品">
-          <el-table :data="selectedGoodsList" style="width: 100%" empty-text="您还没有添加活动商品哦">
+          <el-table :data="selectedGoodsList" style="width: 100%;" empty-text="您还没有添加活动商品哦">
             <el-table-column prop="name" label="主图" width="60">
               <template #default="scope">
                 <div style="display: flex;justify-content: center;align-items: center;">
@@ -144,9 +141,38 @@
             <el-table-column prop="price" label="价格" width="80">
               <template #default="scope">¥ {{ scope.row.price }}</template>
             </el-table-column>
-            <el-table-column label="操作" min-width="50">
+            <el-table-column align="right">
+              <template #header>
+                <el-popover placement="left" :width="350" trigger="click" :visible="goodsPopoverVisible">
+                  <template #reference>
+                    <el-button size="small" type="primary" :icon="Plus" @click="addGoods"/>
+                  </template>
+                  <el-table :data="goodsList" height="30vh" style="width: 100%" @select="selectedGoodsIds">
+                    <el-table-column type="selection" width="45"/>
+                    <el-table-column prop="name" label="主图" width="60">
+                      <template #default="scope">
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                          <el-image class="goods_image" :src="scope.row.imageUrl"/>
+                        </div>
+                      </template>
+                    </el-table-column>
+                    <el-table-column prop="title" label="标题">
+                      <template #default="scope">
+                        <div style="font-size: 10px;line-height: 15px;">{{ scope.row.title }}</div>
+                      </template>
+                    </el-table-column>
+                    <el-table-column prop="price" label="价格" width="80">
+                      <template #default="scope">¥ {{ scope.row.price }}</template>
+                    </el-table-column>
+                  </el-table>
+                  <div style="text-align: right; margin: 0;padding-top: 10px;">
+                    <el-button size="small" @click="goodsPopoverVisible = false">取消</el-button>
+                    <el-button size="small" type="primary" @click="confirmSelectedGoods">确定</el-button>
+                  </div>
+                </el-popover>
+              </template>
               <template #default="scope">
-                <el-button size="small" type="danger" @click="removeSelectedGoods(scope.row)">移除</el-button>
+                <el-button size="small" type="danger" :icon="Minus" @click="removeSelectedGoods(scope.row)" />
               </template>
             </el-table-column>
           </el-table>
@@ -157,34 +183,6 @@
           <el-button @click="cancel">取消</el-button>
           <el-button @click="empty">重置</el-button>
           <el-button type="primary" @click="confirmMarket">确定</el-button>
-        </span>
-      </template>
-    </el-dialog>
-    <!-- 商品列表 -->
-    <el-dialog :title="dialogTitle" v-model="goodsDialogVisible" :lock-scroll="false" top="5vh" width="50%"
-               @close="goodsDialogVisible = false">
-      <el-table :data="goodsList" height="70vh" style="width: 100%" @select="selectedGoodsIds">
-        <el-table-column type="selection" width="55"/>
-        <el-table-column prop="name" label="主图" width="60">
-          <template #default="scope">
-            <div style="display: flex;justify-content: center;align-items: center;">
-              <el-image class="goods_image" :src="scope.row.imageUrl"/>
-            </div>
-          </template>
-        </el-table-column>
-        <el-table-column prop="title" label="标题">
-          <template #default="scope">
-            <div style="font-size: 10px;line-height: 15px;">{{ scope.row.title }}</div>
-          </template>
-        </el-table-column>
-        <el-table-column prop="price" label="价格" width="80">
-          <template #default="scope">¥ {{ scope.row.price }}</template>
-        </el-table-column>
-      </el-table>
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button @click="goodsDialogVisible = false">取消</el-button>
-          <el-button type="primary" @click="confirmSelectedGoods">确定</el-button>
         </span>
       </template>
     </el-dialog>
@@ -246,7 +244,7 @@ export default {
       dialogTitle: '',
       operateType: '',
       marketDialogVisible: false,
-      goodsDialogVisible: false,
+      goodsPopoverVisible: false,
 
       // 请求认证
       token: '',
@@ -361,8 +359,7 @@ export default {
     // 添加关联商品
     addGoods() {
       this.getGoodsList()
-      this.dialogTitle = '添加关联商品'
-      this.goodsDialogVisible = true
+      this.goodsPopoverVisible = true
     },
 
     // 选中时，获取商品ID
@@ -377,7 +374,7 @@ export default {
       this.goodsList.filter(item => {
         this.goodsIds.some(id => { if (id === item.id){ this.selectedGoodsList.push(item) } })
       })
-      this.goodsDialogVisible = false
+      this.goodsPopoverVisible = false
     },
 
     // 移除选中的商品
@@ -521,6 +518,8 @@ export default {
       this.market.beginTime = '',
       this.market.overTime = '',
       this.market.goodsIds = '',
+      this.goodsIds = ''
+      this.selectedGoodsList = []
       this.pictureList = []
     },
   }
