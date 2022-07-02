@@ -7,49 +7,56 @@
       </el-menu>
     </div>
     <div class="avatar">
+      <div class="operate">
+        <el-icon size="20px" @click="onFullscreen" style="cursor: pointer;padding: 10px;"><FullScreen /></el-icon>
+        <el-icon size="20px" style="cursor: pointer;padding: 10px;"><Bell /></el-icon>
+        <el-popover title="向客服反馈问题" placement="bottom" :width="280" :visible="feedbackPopoverVisible" trigger="click">
+          <template #reference>
+            <el-icon size="20px" @click="feedbackPopoverVisible = true" style="cursor: pointer;padding: 10px;"><Service /></el-icon>
+          </template>
+          <el-input v-model="feedback.content" type="textarea" maxlength="100" :autosize="{ minRows: 3}" show-word-limit/>
+          <div style="padding-top: 10px; float: right;">
+            <el-button size="small" @click="cancelFeedback">取消</el-button>
+            <el-button size="small" type="primary" @click="confirmSend">提交</el-button>
+          </div>
+        </el-popover>
+      </div>
       <el-dropdown trigger="click">
         <span class="el-dropdown-link">
-          <el-avatar :size="36" :src="avatarURL" style="cursor: pointer;"/>
+          <el-avatar :size="30" :src="avatarURL" style="cursor: pointer;border: 1px solid #d9ecff;"/>
         </span>
         <template #dropdown>
           <el-dropdown-menu>
-            <el-dropdown-item :icon="Bell">系统通知</el-dropdown-item>
-            <el-dropdown-item :icon="Edit" @click="clickFeedback">问题反馈</el-dropdown-item>
-            <el-dropdown-item :icon="SwitchButton" @click="logout">退出账户</el-dropdown-item>
+            <div style="text-align: center;">
+              <el-avatar :size="45" :src="avatarURL" style="cursor: pointer;border: 1px solid #d9ecff;"/>
+              <div>ID: 203050</div>
+            </div>
+            <el-dropdown-item :icon="SwitchButton" @click="logout" divided>退出账户</el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
     </div>
-    <!-- 问题反馈，对话框 -->
-  <el-dialog title="请输入您要反馈的内容" v-model="feedbackDialogVisible" top="30vh" width="45%"
-             @close="feedbackDialogVisible = false ">
-    <el-input v-model="feedback.content" type="textarea" maxlength="100" :autosize="{ minRows: 5}" show-word-limit/>
-    <template #footer>
-        <span class="dialog-footer">
-          <el-button @click="feedbackDialogVisible = false ">取消</el-button>
-          <el-button type="primary" @click="confirmSend">发送</el-button>
-        </span>
-    </template>
-  </el-dialog>
   </el-header>
 </template>
 
 <script>
-import {Edit, ArrowRight, Bell, SwitchButton} from "@element-plus/icons-vue";
+import {Edit, ArrowRight, SwitchButton, Service, FullScreen, Bell} from "@element-plus/icons-vue";
 import {ElMessage} from "element-plus";
 
 export default {
   name: "Header",
+  components: {Service, FullScreen, Bell},
   setup() {
     return {Edit, Bell, ArrowRight, SwitchButton}
   },
   data() {
     return {
       avatarURL: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
-      feedbackDialogVisible: false,
       feedback: {
         content: ''
-      }
+      },
+      fullscreenStatus: false,
+      feedbackPopoverVisible: false,
     }
   },
   computed: {
@@ -63,9 +70,16 @@ export default {
     }
   },
   methods: {
-    // 点击反馈问题
-    clickFeedback(){
-      this.feedbackDialogVisible = true
+
+    // 全屏或退出全屏
+    onFullscreen() {
+      if(this.fullscreenStatus){
+        document.webkitExitFullscreen()
+        this.fullscreenStatus = false
+      } else {
+        document.documentElement.webkitRequestFullscreen()
+        this.fullscreenStatus = true
+      }
     },
 
     // 确认发送反馈内容
@@ -77,8 +91,15 @@ export default {
           ElMessage({message: '反馈成功，我们将尽快回复！', type: 'success'})
         }
         console.log(response)
-        this.feedbackDialogVisible = false
       })
+      this.feedback.content = ''
+      this.feedbackPopoverVisible = false
+    },
+
+    // 取消反馈
+    cancelFeedback(){
+      this.feedback.content = ''
+      this.feedbackPopoverVisible = false
     },
 
     // 退出登录
@@ -124,7 +145,13 @@ export default {
   align-items: flex-end;
   margin-left: 8px;
 }
-
+.operate{
+  height: 55px;
+  margin: 0 20px;
+  display: inline-flex;
+  justify-items: center;
+  align-items: center;
+}
 .avatar {
   width: 20%;
   height: 55px;
