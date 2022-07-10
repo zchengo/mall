@@ -63,7 +63,8 @@ export default {
 }
 
 .main {
-  padding: 12px;
+  padding: 10px;
+  overflow-y: hidden;
 }
 
 .fade-enter-from,.fade-leave-to {

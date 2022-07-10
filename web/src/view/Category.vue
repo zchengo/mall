@@ -11,7 +11,7 @@
       </el-form-item>
     </el-form>
     <!-- 商品一级类目列表 -->
-    <el-table :data="categoryLv1List" height="70vh" style="width: 100%">
+    <el-table :data="categoryLv1List" height="65vh" style="width: 100%">
       <el-table-column prop="id" label="编号"/>
       <el-table-column prop="name" label="名称"/>
       <el-table-column prop="level" label="级别"/>

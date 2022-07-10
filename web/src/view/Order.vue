@@ -20,7 +20,7 @@
       </el-form-item>
     </el-form>
     <!-- 订单列表 -->
-    <el-table :data="orderList" height="70vh" style="width: 100%">
+    <el-table :data="orderList" height="65vh" style="width: 100%">
       <el-table-column prop="id" label="订单号" width="200px"/>
       <el-table-column prop="totalPrice" label="订单金额"/>
       <el-table-column prop="goodsCount" label="商品数量">

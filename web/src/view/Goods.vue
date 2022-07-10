@@ -25,7 +25,7 @@
       </el-form-item>
     </el-form>
     <!-- 商品列表 -->
-    <el-table :data="goodsList" height="70vh" style="width: 100%">
+    <el-table :data="goodsList" height="65vh" style="width: 100%;">
       <el-table-column prop="name" label="商品名称" min-width="240">
         <template #default="scope">
           <div style="display: inline-flex;">
@@ -83,7 +83,7 @@
         </div>
       </template>
     </el-table>
-    <div style="padding: 10px 0;">
+    <div style="padding: 15px 0;">
       <el-pagination layout="total, prev, pager, next"
                    :current-page="pageNum"
                    :page-size="pageSize"

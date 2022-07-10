@@ -24,7 +24,7 @@
       </el-form-item>
     </el-form>
     <!-- 活动列表 -->
-    <el-table :data="marketList" height="70vh" style="width: 100%">
+    <el-table :data="marketList" height="65vh" style="width: 100%">
      <el-table-column prop="bannerImage" label="活动图片" min-width="50">
         <template #default="scope">
           <el-image :src="scope.row.bannerImage" style="border-radius: 5px;"/>
