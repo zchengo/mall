@@ -66,8 +66,8 @@ export default {
 
 <style scoped>
 .el-menu {
-  width: 165px !important;
-  height: 40px !important;
+  width: 105px !important;
+  height: 50px !important;
   border-right: 0 !important;
 }
 .menu-item{
