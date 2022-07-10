@@ -280,4 +280,14 @@ export default {
   height: 35px;
   border-radius: 5px;
 }
+.el-dialog {
+  border-radius: 10px !important;
+}
+
+.el-table__header tr, .el-table__header th {
+  background-color: #eff6ff !important;
+  font-weight: 450 !important;
+  color: #627a94 !important;
+  border-bottom: none !important;
+}
 </style>

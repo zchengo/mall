@@ -532,4 +532,47 @@ export default {
   height: 35px;
   border-radius: 5px;
 }
+.el-dialog {
+  border-radius: 10px !important;
+}
+
+.el-upload{
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 16px;
+}
+
+.el-upload--picture-card {
+  background-color: #F2F4F7;
+  border: none;
+}
+
+.el-upload--picture-card{
+  width: 100px;
+  height: 100px;
+  margin-top: 0;
+  font-size: 16px !important;
+}
+
+.el-upload-list--picture-card .el-upload-list__item{
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 16px;
+}
+
+.el-upload-list--picture-card .el-upload-list__item-thumbnail{
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 16px;
+}
+
+.el-table__header tr, .el-table__header th {
+  background-color: #eff6ff !important;
+  font-weight: 450 !important;
+  color: #627a94 !important;
+  border-bottom: none !important;
+}
 </style>
