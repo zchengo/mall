@@ -20,7 +20,7 @@
       </el-form-item>
       <el-form-item>
         <el-button type="primary" :icon="Search" @click="getGoodsList">查询</el-button>
-        <el-button type="primary" :icon="Brush" @click="resetForm"/>
+        <el-button type="primary" :icon="Brush" @click="resetForm('query')"/>
         <el-button type="primary" :icon="Plus" @click="add">商品</el-button>
       </el-form-item>
     </el-form>
@@ -94,31 +94,32 @@
     </div>
     <!-- 添加、编辑商品，通用对话框 -->
     <el-dialog :title="dialogTitle" v-model="goodsDialogVisible" :lock-scroll="false" top="5vh" width="45%" @close="cancel">
-      <el-form :model="goods" label-width="80px">
-        <el-form-item label="类目" :required="true">
+      <el-form ref="ruleForm" :rules="rules" :model="goods" label-width="80px">
+        <el-form-item label="类目" prop="categoryId">
           <el-cascader v-model="goods.categoryId"
                        :options="categoryOption"
                        @change="changeCategory"
                        change-on-select
                        @focus="getCategoryOption" placeholder="请选择" clearable/>
         </el-form-item>
-        <el-form-item label="标题" :required="true">
+        <el-form-item label="标题" prop="title">
           <el-input v-model="goods.title" style="width: 90%;" type="text" maxlength="30" show-word-limit/>
         </el-form-item>
-        <el-form-item label="名称" :required="true">
+        <el-form-item label="名称" prop="name">
           <el-input v-model="goods.name" style="width: 50%;" type="text" maxlength="10" show-word-limit/>
         </el-form-item>
-        <el-form-item label="价格" :required="true">
+        <el-form-item label="价格" prop="price">
           <el-input v-model.number="goods.price" style="width: 50%;">
             <template #append>元</template>
           </el-input>
         </el-form-item>
-        <el-form-item label="数量" :required="true">
+        <el-form-item label="数量" prop="quantity">
           <el-input v-model.number="goods.quantity" style="width: 50%;">
             <template #append>件</template>
           </el-input>
         </el-form-item>
-        <el-form-item label="图片" :required="true">
+        <el-form-item label="图片" prop="imageUrl">
+          <el-input v-show="false" v-model="goods.imageUrl" />
           <el-upload
               action="http://localhost:8000/web/upload"
               :headers="{'token': token}"
@@ -143,7 +144,7 @@
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="cancel">取消</el-button>
-          <el-button @click="empty">重置</el-button>
+          <el-button @click="resetForm('ruleForm')">重置</el-button>
           <el-button type="primary" @click="confirmGoods">确定</el-button>
         </span>
       </template>
@@ -183,12 +184,20 @@ export default {
         categoryId: '',
         title: '',
         name: '',
-        brandId: '',
         price: '',
         quantity: '',
         imageUrl: '',
         remark: '',
         status: ''
+      },
+
+      rules: {
+        categoryId: { required: true, message: '请选择一个类目', trigger: 'blur' },
+        title: { required: true, message: '请输入一个标题', trigger: 'blur' },
+        name: { required: true, message: '请输入一个名称', trigger: 'blur' },
+        price: [ {required: true, message: '价格不能为空', trigger: 'blur' },{type: 'number',message: '价格必须为数字', trigger: 'blur'}],
+        quantity: [ {required: true, message: '价格不能为空', trigger: 'blur' },{type: 'number',message: '价格必须为数字', trigger: 'blur'}],
+        imageUrl: { required: true, message: '至少上传一张图片', trigger: 'blur' },
       },
 
       // 图片列表
@@ -320,42 +329,44 @@ export default {
 
     // 确认添加或编辑商品
     confirmGoods() {
-      let valid = this.goodsFormValidator()
-      if (valid) {
-        if (this.operateType === 'add') {
-          // 添加商品
-          this.$axios.post('/goods/create', {
-            categoryId: parseInt(this.goods.categoryId),
-            title: this.goods.title,
-            name: this.goods.name,
-            price: parseInt(this.goods.price),
-            quantity: parseInt(this.goods.quantity),
-            imageUrl: this.goods.imageUrl,
-            remark: this.goods.remark
-          }).then((response) => {
-            if (response.data.code === 200) {
-              ElMessage({message: response.data.message, type: 'success'})
-            }
-            this.getGoodsList()
-          }).catch((error) => {
-            console.log(error)
-          })
+      this.$refs['ruleForm'].validate((valid) => {
+        if (valid) {
+          if (this.operateType === 'add') {
+            // 添加商品
+            this.$axios.post('/goods/create', {
+              categoryId: parseInt(this.goods.categoryId),
+              title: this.goods.title,
+              name: this.goods.name,
+              price: parseInt(this.goods.price),
+              quantity: parseInt(this.goods.quantity),
+              imageUrl: this.goods.imageUrl,
+              remark: this.goods.remark
+            }).then((response) => {
+              if (response.data.code === 200) {
+                ElMessage({message: response.data.message, type: 'success'})
+              }
+              this.getGoodsList()
+            }).catch((error) => {
+              console.log(error)
+            })
+          }
+          if (this.operateType === 'edit') {
+            // 编辑商品
+            this.$axios.put('/goods/update', this.goods).then((response) => {
+              if (response.data.code === 200) {
+                ElMessage({message: response.data.message, type: 'success'})
+              }
+              this.getGoodsList()
+            }).catch((error) => {
+              console.log(error)
+            })
+          }
+          this.goodsDialogVisible = false
+        } else {
+          console.log('error submit!!')
+          return false
         }
-        if (this.operateType === 'edit') {
-          // 编辑商品
-          this.$axios.put('/goods/update', this.goods).then((response) => {
-            if (response.data.code === 200) {
-              ElMessage({message: response.data.message, type: 'success'})
-            }
-            this.getGoodsList()
-          }).catch((error) => {
-            console.log(error)
-          })
-        }
-        this.goodsDialogVisible = false
-      } else {
-        console.log('error submit!')
-      }
+      })
     },
 
     // 删除商品
@@ -374,43 +385,19 @@ export default {
       })
     },
 
-    // 表单校验
-    goodsFormValidator() {
-      if (this.goods.categoryId === ''){
-        ElMessage({message: '请选择一个类目', type: 'warning'})
-        return false
+    // 重置表单
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
+      switch (formName) {
+        case 'query': this.getGoodsList(); break;
+        case 'ruleForm': this.empty(); break;
+        default: console.log('invalid resetForm');
       }
-      if (this.goods.title === ''){
-        ElMessage({message: '标题不能为空', type: 'warning'})
-        return false
-      }
-      if (this.goods.name === ''){
-        ElMessage({message: '名称不能为空', type: 'warning'})
-        return false
-      }
-      if (this.goods.price === ''){
-        ElMessage({message: '价格不能为空', type: 'warning'})
-        return false
-      }
-      if (this.goods.quantity === ''){
-        ElMessage({message: '数量不能为空', type: 'warning'})
-        return false
-      }
-      if (this.goods.imageUrl === ''){
-        ElMessage({message: '图片不能为空', type: 'warning'})
-        return false
-      }
-      return true
-    },
-
-    // 重置查询表单
-    resetForm() {
-      this.$refs['query'].resetFields()
-      this.getGoodsList()
     },
 
     // 取消
     cancel() {
+      this.$refs['ruleForm'].resetFields()
       this.empty()
       this.goodsDialogVisible = false
     },

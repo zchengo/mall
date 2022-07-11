@@ -95,16 +95,17 @@
     <!-- 添加、编辑营销，通用对话框 -->
     <el-dialog :title="dialogTitle" v-model="marketDialogVisible" :lock-scroll="false" top="5vh" width="45%"
                @close="cancel">
-      <el-form :model="market" label-width="80px">
-        <el-form-item label="活动名称" :required="true">
+      <el-form ref="ruleForm" :rules="rules" :model="market" label-width="80px">
+        <el-form-item label="活动名称" prop="name">
           <el-input v-model="market.name" type="text" maxlength="20" show-word-limit/>
         </el-form-item>
-        <el-form-item label="活动类型" :required="true">
+        <el-form-item label="活动类型" prop="type">
           <el-select v-model.number="market.type" placeholder="请选择" clearable>
             <el-option v-for="item in typeOption" :key="item.value" :label="item.label" :value="item.value"/>
           </el-select>
         </el-form-item>
-        <el-form-item label="活动图片" :required="true">
+        <el-form-item label="活动图片" prop="bannerImage">
+          <el-input v-show="false" v-model="market.bannerImage"/>
           <el-upload
               action="http://localhost:8000/web/upload"
               :headers="{'token': token}"
@@ -118,13 +119,14 @@
             <div class="goods_image_upload_icon">+</div>
           </el-upload>
         </el-form-item>
-        <el-form-item label="开始时间" :required="true">
+        <el-form-item label="开始时间" prop="beginTime">
           <el-date-picker v-model="market.beginTime" value-format="YYYY-MM-DD HH:mm:ss" type="datetime" placeholder="请选择开始时间"/>
         </el-form-item>
-        <el-form-item label="结束时间" :required="true">
+        <el-form-item label="结束时间" prop="overTime">
           <el-date-picker v-model="market.overTime" value-format="YYYY-MM-DD HH:mm:ss" type="datetime" placeholder="请选择结束时间"/>
         </el-form-item>
-        <el-form-item label="关联商品" :required="true">
+        <el-form-item label="关联商品" prop="goodsIds">
+          <el-input v-show="false" v-model="market.goodsIds"/>
           <el-table :data="selectedGoodsList" style="width: 100%;" empty-text="您还没有添加活动商品哦">
             <el-table-column prop="name" label="主图" width="60">
               <template #default="scope">
@@ -181,7 +183,7 @@
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="cancel">取消</el-button>
-          <el-button @click="empty">重置</el-button>
+          <el-button @click="resetForm('ruleForm')">重置</el-button>
           <el-button type="primary" @click="confirmMarket">确定</el-button>
         </span>
       </template>
@@ -226,6 +228,16 @@ export default {
         value: 2,
         label: '限时特惠'
       }],
+
+      rules: {
+        name: { required: true, message: '请输入一个名称', trigger: 'blur' },
+        bannerImage: { required: true, message: '至少上传一张图片', trigger: 'blur' },
+        type: { required: true, message: '请选择活动类型', trigger: 'blur' },
+        beginTime: { required: true, message: '请设置开始时间', trigger: 'blur' },
+        overTime: { required: true, message: '请设置结束时间', trigger: 'blur' },
+        goodsIds: { required: true, message: '至少关联一个商品', trigger: 'blur' }
+      },
+
 
       // 图片列表
       pictureList: [],
@@ -283,12 +295,6 @@ export default {
     },
     handleImageSuccess(response) {
       this.market.bannerImage = response.data
-    },
-
-    // 重置查询表单
-    resetForm() {
-      this.$refs['query'].resetFields()
-      this.getMarketList()
     },
 
     // 添加活动
@@ -409,54 +415,52 @@ export default {
 
     // 确认添加或编辑活动
     confirmMarket() {
-      let valid = this.marketFormValidator();
-      if (valid) {
-        if (this.operateType === 'add') {
-          if (this.market.goodsIds === "") {
-            ElMessage({message: '请至少关联一个活动商品', type: 'warning'})
-            return
+      this.$refs['ruleForm'].validate((valid) => {
+        if (valid) {
+          if (this.operateType === 'add') {
+            // 添加活动
+            this.$axios.post('/market/create', {
+              name: this.market.name,
+              type: this.market.type,
+              bannerImage: this.market.bannerImage,
+              beginTime: this.market.beginTime,
+              overTime: this.market.overTime,
+              goodsIds: this.market.goodsIds
+            }).then((response) => {
+              if (response.data.code === 200) {
+                ElMessage({message: response.data.message, type: 'success'})
+              }
+              this.getMarketList()
+            }).catch((error) => {
+              console.log(error)
+            })
           }
-          // 添加活动
-          this.$axios.post('/market/create', {
-            name: this.market.name,
-            type: this.market.type,
-            bannerImage: this.market.bannerImage,
-            beginTime: this.market.beginTime,
-            overTime: this.market.overTime,
-            goodsIds: this.market.goodsIds
-          }).then((response) => {
-            if (response.data.code === 200) {
-              ElMessage({message: response.data.message, type: 'success'})
-            }
-            this.getMarketList()
-          }).catch((error) => {
-            console.log(error)
-          })
+          if (this.operateType === 'edit') {
+            // 编辑活动
+            this.$axios.put('/market/update', {
+              id: this.market.id,
+              name: this.market.name,
+              type: this.market.type,
+              bannerImage: this.market.bannerImage,
+              beginTime: this.market.beginTime,
+              overTime: this.market.overTime,
+              goodsIds: this.market.goodsIds,
+              status: this.market.status
+            }).then((response) => {
+              if (response.data.code === 200) {
+                ElMessage({message: response.data.message, type: 'success'})
+              }
+              this.getMarketList()
+            }).catch((error) => {
+              console.log(error)
+            })
+          }
+          this.marketDialogVisible = false
+        } else {
+          console.log('error submit!!')
+          return false
         }
-        if (this.operateType === 'edit') {
-          // 编辑活动
-          this.$axios.put('/market/update', {
-            id: this.market.id,
-            name: this.market.name,
-            type: this.market.type,
-            bannerImage: this.market.bannerImage,
-            beginTime: this.market.beginTime,
-            overTime: this.market.overTime,
-            goodsIds: this.market.goodsIds,
-            status: this.market.status
-          }).then((response) => {
-            if (response.data.code === 200) {
-              ElMessage({message: response.data.message, type: 'success'})
-            }
-            this.getMarketList()
-          }).catch((error) => {
-            console.log(error)
-          })
-        }
-        this.marketDialogVisible = false
-      } else {
-        console.log("error submit!!");
-      }
+      })
     },
 
     // 删除活动
@@ -475,39 +479,21 @@ export default {
       })
     },
 
-    // 表单校验
-    marketFormValidator() {
-      if (this.market.name === '') {
-        ElMessage({ message: '名称不能为空', type: 'warning' });
-        return false;
-      }
-      if (this.market.type === '') {
-        ElMessage({ message: '类型不能为空', type: 'warning' });
-        return false;
-      }
-      if (this.market.bannerImage === '') {
-        ElMessage({ message: '图片不能为空', type: 'warning' });
-        return false;
-      }
-      if (this.market.beginTime === '') {
-        ElMessage({ message: "请设置开始时间", type: 'warning' });
-        return false;
-      }
-      if (this.market.overTime === "") {
-        ElMessage({ message: "请设置结束时间", type: 'warning' });
-        return false;
-      }
-      if (this.market.goodsIds === "") {
-        ElMessage({ message: "至少关联一个商品", type: 'warning' });
-        return false;
-      }
-      return true;
-    },
-
     // 取消
     cancel() {
+      this.$refs['ruleForm'].resetFields()
       this.empty()
       this.marketDialogVisible = false
+    },
+
+    // 重置表单
+    resetForm(formName) {
+      this.$refs[formName].resetFields()
+      switch (formName) {
+        case 'query': this.getMarketList(); break;
+        case 'ruleForm': this.empty(); break;
+        default: console.log('invalid resetForm');
+      }
     },
 
     // 清空数据
