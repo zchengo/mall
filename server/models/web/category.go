@@ -13,22 +13,22 @@ type Category struct {
 
 // 商品类目创建参数模型
 type CategoryCreateParam struct {
-	Name     string `json:"name"`
-	ParentId uint64 `json:"parentId"`
-	Level    uint   `json:"level"`
-	Sort     uint   `json:"sort"`
+	Name     string `json:"name" binding:"required"`
+	ParentId uint64 `json:"parentId" binding:"required,gt=0"`
+	Level    uint   `json:"level" binding:"required,gt=0"`
+	Sort     uint   `json:"sort" binding:"required,gt=0"`
 }
 
 // 商品类目删除参数模型
 type CategoryDeleteParam struct {
-	Id uint64 `form:"id"`
+	Id uint64 `form:"id" binding:"required,gt=0"`
 }
 
 // 商品类目更新参数模型
 type CategoryUpdateParam struct {
-	Id   uint64 `json:"id"`
+	Id   uint64 `json:"id" binding:"required,gt=0"`
 	Name string `json:"name"`
-	Sort uint   `json:"sort"`
+	Sort uint   `json:"sort" binding:"required,gt=0"`
 }
 
 // 商品类目查询参数模型

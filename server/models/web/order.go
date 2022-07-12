@@ -17,13 +17,13 @@ type Order struct {
 
 // 订单删除参数模型
 type OrderDeleteParam struct {
-	Id uint64 `form:"id"`
+	Id uint64 `form:"id" binding:"required,gt=0"`
 }
 
 // 订单更新参数模型
 type OrderUpdateParam struct {
-	Id     uint64 `json:"id"`
-	Status int    `json:"status"`
+	Id     uint64 `json:"id" binding:"required,gt=0"`
+	Status int    `json:"status" binding:"required,gt=0"`
 }
 
 // 订单列表查询参数模型

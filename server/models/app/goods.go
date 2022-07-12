@@ -18,7 +18,7 @@ type Goods struct {
 
 // 商品详情参数模型
 type GoodsInfoParam struct {
-	Id uint64 `form:"id"`
+	Id uint64 `form:"id" binding:"required,gt=0"`
 }
 
 // 商品列表参数模型
@@ -28,7 +28,7 @@ type GoodsQueryParam struct {
 
 // 商品搜索参数模型
 type GoodsSearchParam struct {
-	KeyWord string `form:"keyWord"`
+	KeyWord string `form:"keyWord" binding:"required"`
 }
 
 // 商品列表传输模型

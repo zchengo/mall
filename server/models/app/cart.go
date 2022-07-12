@@ -2,20 +2,20 @@ package app
 
 // 购物车添加参数模型
 type CartAddParam struct {
-	GoodsId    uint   `form:"goodsId"`
-	GoodsCount uint   `form:"goodsCount"`
-	OpenId     string `form:"openId"`
+	GoodsId    uint   `form:"goodsId" binding:"required"`
+	GoodsCount uint   `form:"goodsCount" binding:"required"`
+	OpenId     string `form:"openId" binding:"required"`
 }
 
 // 购物车删除参数模型
 type CartDeleteParam struct {
-	OpenId  string `form:"openId"`
-	GoodsId string `form:"goodsId"`
+	OpenId  string `form:"openId" binding:"required"`
+	GoodsId string `form:"goodsId" binding:"required"`
 }
 
 // 购物车清除参数模型
 type CartClearParam struct {
-	OpenId string `form:"openId"`
+	OpenId string `form:"openId" binding:"required"`
 }
 
 // 购物车信息查询参数模型

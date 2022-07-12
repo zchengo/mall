@@ -18,19 +18,19 @@ type Address struct {
 // 收货地址保存参数模型
 type AddressSaveParam struct {
 	Id              uint64 `form:"id"`
-	OpenId          string `form:"openId"`
-	Name            string `form:"name"`
-	Mobile          string `form:"mobile"`
-	Province        string `form:"province"`
-	City            string `form:"city"`
-	District        string `form:"district"`
-	DetailedAddress string `form:"detailedAddress"`
-	IsDefault       int    `form:"isDefault"`
+	OpenId          string `form:"openId" binding:"required"`
+	Name            string `form:"name" binding:"required"`
+	Mobile          string `form:"mobile" binding:"required"`
+	Province        string `form:"province" binding:"required"`
+	City            string `form:"city" binding:"required"`
+	District        string `form:"district" binding:"required"`
+	DetailedAddress string `form:"detailedAddress" binding:"required"`
+	IsDefault       int    `form:"isDefault" binding:"required,gt=0"`
 }
 
 // 收货地址删除参数模型
 type AddressDeleteParam struct {
-	Id uint64 `form:"id"`
+	Id uint64 `form:"id" binding:"required,gt=0"`
 }
 
 // 收货地址列表查询参数模型

@@ -20,36 +20,36 @@ type Goods struct {
 
 // 商品创建参数模型
 type GoodsCreateParam struct {
-	CategoryId uint64  `json:"categoryId"`
-	Title      string  `json:"title"`
-	Name       string  `json:"name"`
-	Price      float64 `json:"price"`
-	Quantity   uint    `json:"quantity"`
-	ImageUrl   string  `json:"imageUrl"`
+	CategoryId uint64  `json:"categoryId" binding:"required,gt=0"`
+	Title      string  `json:"title" binding:"required"`
+	Name       string  `json:"name" binding:"required"`
+	Price      float64 `json:"price" binding:"required,gt=0"`
+	Quantity   uint    `json:"quantity" binding:"required,gt=0"`
+	ImageUrl   string  `json:"imageUrl" binding:"required"`
 	Remark     string  `json:"remark"`
 }
 
 // 商品删除参数模型
 type GoodsDeleteParam struct {
-	Id uint64 `form:"id"`
+	Id uint64 `form:"id" binding:"required,gt=0"`
 }
 
 // 商品更新参数模型
 type GoodsUpdateParam struct {
-	Id         uint64  `json:"id"`
-	CategoryId uint64  `json:"categoryId"`
-	Title      string  `json:"title"`
-	Name       string  `json:"name"`
-	Price      float64 `json:"price"`
-	Quantity   uint    `json:"quantity"`
-	ImageUrl   string  `json:"imageUrl"`
+	Id         uint64  `json:"id" binding:"required,gt=0"`
+	CategoryId uint64  `json:"categoryId" binding:"required,gt=0"`
+	Title      string  `json:"title" binding:"required"`
+	Name       string  `json:"name" binding:"required"`
+	Price      float64 `json:"price" binding:"required,gt=0"`
+	Quantity   uint    `json:"quantity" binding:"required,gt=0"`
+	ImageUrl   string  `json:"imageUrl" binding:"required"`
 	Remark     string  `json:"remark"`
 }
 
 // 商品状态更新参数模型
 type GoodsStatusUpdateParam struct {
-	Id     uint64 `json:"id"`
-	Status uint   `json:"status"`
+	Id     uint64 `json:"id" binding:"required,gt=0"`
+	Status uint   `json:"status" binding:"required,gt=0"`
 }
 
 // 商品列表查询参数模型

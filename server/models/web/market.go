@@ -18,35 +18,35 @@ type Market struct {
 
 // 营销创建参数模型
 type MarketCreateParam struct {
-	Name        string `json:"name"`
-	Type        int    `json:"type"`
-	BannerImage string `json:"bannerImage"`
-	BeginTime   string `json:"beginTime"`
-	OverTime    string `json:"overTime"`
-	GoodsIds    string `json:"goodsIds"`
+	Name        string `json:"name" binding:"required"`
+	Type        int    `json:"type" binding:"required,gt=0"`
+	BannerImage string `json:"bannerImage" binding:"required"`
+	BeginTime   string `json:"beginTime" binding:"required"`
+	OverTime    string `json:"overTime" binding:"required"`
+	GoodsIds    string `json:"goodsIds" binding:"required"`
 }
 
 // 营销删除参数模型
 type MarketDeleteParam struct {
-	Id uint64 `form:"id"`
+	Id uint64 `form:"id" binding:"required,gt=0"`
 }
 
 // 营销更新参数模型
 type MarketUpdateParam struct {
-	Id          uint64 `json:"id"`
-	Name        string `json:"name"`
-	Type        int    `json:"type"`
-	BannerImage string `json:"bannerImage"`
-	BeginTime   string `json:"beginTime"`
-	OverTime    string `json:"overTime"`
-	GoodsIds    string `json:"goodsIds"`
-	Status      int    `json:"status"`
+	Id          uint64 `json:"id" binding:"required,gt=0"`
+	Name        string `json:"name" binding:"required"`
+	Type        int    `json:"type" binding:"required"`
+	BannerImage string `json:"bannerImage" binding:"required"`
+	BeginTime   string `json:"beginTime" binding:"required"`
+	OverTime    string `json:"overTime" binding:"required"`
+	GoodsIds    string `json:"goodsIds" binding:"required"`
+	Status      int    `json:"status" binding:"required,gt=0"`
 }
 
 // 营销状态更新参数模型
 type MarketStatusUpdateParam struct {
-	Id     uint64 `json:"id"`
-	Status int    `json:"status"`
+	Id     uint64 `json:"id" binding:"required,gt=0"`
+	Status int    `json:"status" binding:"required,gt=0"`
 }
 
 // 营销查询参数模型

@@ -15,10 +15,10 @@ type User struct {
 
 // 用户登录参数模型
 type LoginParam struct {
-	Username     string `json:"username"`
-	Password     string `json:"password"`
-	CaptchaId    string `json:"captchaId"`
-	CaptchaValue string `json:"captchaValue"`
+	Username     string `json:"username" binding:"required"`
+	Password     string `json:"password" binding:"required"`
+	CaptchaId    string `json:"captchaId" binding:"required"`
+	CaptchaValue string `json:"captchaValue" binding:"required"`
 }
 
 // 用户信息传输模型

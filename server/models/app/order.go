@@ -15,19 +15,19 @@ type Order struct {
 
 // 订单更新参数模型
 type OrderUpdateParam struct {
-	Id     uint64 `form:"id"`
-	Status int    `form:"status"`
+	Id     uint64 `form:"id" binding:"required,gt=0"`
+	Status int    `form:"status" binding:"required,gt=0"`
 }
 
 // 订单提交参数模型
 type OrderSubmitParam struct {
-	OpenId string `form:"openId"    json:"openId"`
+	OpenId string `form:"openId" json:"openId" binding:"required"`
 }
 
 // 订单查询参数模型
 type OrderQueryParam struct {
-	Type   int    `form:"type"    json:"type"`
-	OpenId string `form:"openId"    json:"openId"`
+	Type   int    `form:"type" json:"type"`
+	OpenId string `form:"openId" json:"openId"`
 }
 
 // 订单列表传输模型
