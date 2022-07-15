@@ -37,6 +37,11 @@
         </el-form-item>
       </el-form>
     </div>
+    <div class="footer">
+      <a href="https://github.com/zchengo/imall"><img src="../assets/github.png"/></a>
+      <a href="https://www.zhihu.com/people/87-4-8-5"><img src="../assets/zhihu.png"/></a>
+      <div>MIT License Copyright (c) 2022 zchengo</div>
+    </div>
   </div>
 </template>
 
@@ -81,7 +86,7 @@ export default {
         ],
         captchaValue: [
           {required: true, message: '请输入验证码', trigger: 'blur'},
-          {min: 4, max: 4, message: '长度为 5 个字符', trigger: 'blur'}
+          {min: 4, max: 4, message: '长度为 4 个字符', trigger: 'blur'}
         ],
       }
     };
@@ -136,32 +141,52 @@ export default {
   background-image: url("../assets/back.png");
   background-size: 100% 60%;
   background-repeat: no-repeat;
-  opacity: 0.8;
   background-color: #e8ecf1;
 }
 .form {
   width: 25%;
-  height: 55%;
+  height: 50%;
   margin: 150px auto;
   text-align: center;
   padding: 20px;
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 1px 2px 1px #F2F6FC;
+  border-radius: 15px;
+  box-shadow: 0px 0px 1px #F2F6FC;
 }
 .logo {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   margin: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 12px #ebeff4;
 }
 .captchaImg {
   width: 45%;
   height: 40px;
-  padding: 0 20px;
+  margin-left: 5%;
   float: left;
+  border-radius: 5px;
+  background-color: #ecf5ff;
 }
 .button {
   width: 100%;
   margin-top: 5px;
+}
+
+.footer{
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  position: absolute;
+  text-align: center;
+  color: #75777c;
+  font-size: 10px;
+}
+
+.footer img{
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  margin: 0 20px;
 }
 </style>
