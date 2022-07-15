@@ -3,7 +3,7 @@ package common
 import "github.com/mojocn/base64Captcha"
 
 var store = base64Captcha.DefaultMemStore
-var driver = base64Captcha.NewDriverDigit(40, 120, 4, 0.7, 80)
+var driver = base64Captcha.NewDriverDigit(40, 120, 4, 0, 10)
 
 // 生成验证码
 func GenerateCaptcha() (id, b64s string, err error) {
