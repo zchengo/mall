@@ -6,6 +6,7 @@ import Goods from "../view/Goods";
 import Category from "../view/Category";
 import Order from "../view/Order";
 import Market from "../view/Market";
+import Error from "../view/Error";
 
 const routes = [
     {
@@ -43,6 +44,10 @@ const routes = [
                 component: Market,
             }
         ],
+    },
+    {
+        path: '/404',
+        component: Error,
     },
 ]
 
