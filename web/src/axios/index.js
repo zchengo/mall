@@ -1,4 +1,5 @@
 import axios from "axios";
+import router from '../router/index';
 import { ElMessage } from 'element-plus';
 
 axios.defaults.baseURL = "http://localhost:8000/web";
@@ -26,6 +27,7 @@ request.interceptors.response.use(response => {
     }
 },error => {
     console.log(error)
+    router.push('/404');
     return Promise.reject(error)
 })
 
