@@ -2,6 +2,7 @@ package initialize
 
 import (
 	"fmt"
+	"net/http"
 	"imall/api"
 	"imall/global"
 	"imall/middleware"
@@ -18,6 +19,11 @@ func Router() {
 
 	// 静态资源请求映射
 	engine.Static("/image", global.Config.Upload.SavePath)
+
+	// 404
+	engine.NoRoute(func(c *gin.Context) {
+        c.String(http.StatusNotFound, "404 not found")
+    })
 
 	// 商城后台管理API
 	web := engine.Group("/web")
