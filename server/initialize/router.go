@@ -2,10 +2,10 @@ package initialize
 
 import (
 	"fmt"
-	"net/http"
 	"imall/api"
 	"imall/global"
 	"imall/middleware"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -22,8 +22,8 @@ func Router() {
 
 	// 404
 	engine.NoRoute(func(c *gin.Context) {
-        c.String(http.StatusNotFound, "404 not found")
-    })
+		c.String(http.StatusNotFound, "404 not found")
+	})
 
 	// 商城后台管理API
 	web := engine.Group("/web")
@@ -40,8 +40,9 @@ func Router() {
 		web.POST("/upload", api.GetWebFileUpload().FileUpload)
 
 		// 数据统计
-		web.GET("/today/data", api.GetWebStatistics().GetOrderData)
-		web.GET("/week/data", api.GetWebStatistics().GetWeekData)
+		web.GET("/today/data", api.GetWebStatistics().GetTodayData)
+		web.GET("/order/data", api.GetWebStatistics().GetOrderData)
+		web.GET("/shop/data", api.GetWebStatistics().GetShopData)
 
 		// 商品管理
 		web.POST("/goods/create", api.GetWebGoods().CreateGoods)
