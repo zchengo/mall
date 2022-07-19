@@ -1,23 +1,21 @@
 <template>
   <div class="container">
-    <div class="content"><slot/></div>
+    <div class="content"><slot /></div>
   </div>
 </template>
 
 <script>
-export default {
-  name: "Container"
-}
+export default {};
 </script>
 
 <style scoped>
-.container{
+.container {
   width: 100%;
   height: 100%;
   border-radius: 5px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
-.content{
+.content {
   padding: 15px;
 }
 </style>
