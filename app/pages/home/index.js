@@ -30,7 +30,9 @@ Page({
 
   // 获取Banner
   async getBanners(){
-    let res = await http.GET('/banner/list')
+    let res = await http.GET('/banner/list',{
+      sid: parseInt(wx.getStorageSync('sid'))
+    })
     this.setData({bannerList: res.data.data})
   },
 
@@ -42,14 +44,19 @@ Page({
   
   // 获取分类选项
   async getCategoryOption() {
-    let res = await http.GET('/category/option')
+    let res = await http.GET('/category/option',{
+      sid: parseInt(wx.getStorageSync('sid'))
+    })
     this.setData({options: res.data.data})
     this.getGoodsList(res.data.data[0].id)
   },
 
   // 获取商品列表
   async getGoodsList(categoryId) {
-    let res = await http.GET('/goods/list', {categoryId: categoryId})
+    let res = await http.GET('/goods/list', {
+      categoryId: categoryId,
+      sid: parseInt(wx.getStorageSync('sid'))
+    })
     this.setData({goodsList: res.data.data})
     console.log(this.data.goodsList);
   },

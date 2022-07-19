@@ -43,7 +43,10 @@ Page({
   // 确认支付
   confirmPay(){
     this.setData({showView: false})
-    http.POST('/order/submit', {openId: wx.getStorageSync('openId')})
+    http.POST('/order/submit', {
+      openId: wx.getStorageSync('openId'),
+      sid: parseInt(wx.getStorageSync('sid'))
+    })
   },
 
   // 返回首页

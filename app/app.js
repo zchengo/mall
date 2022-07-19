@@ -13,6 +13,8 @@ App({
         }
       }
     })
+    // 店铺id
+    wx.setStorageSync('sid', '100001');
   },
   globalData: {
     userInfo: null
