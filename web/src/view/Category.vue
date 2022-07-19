@@ -1,5 +1,5 @@
 <template>
-  <Container>
+  <container>
     <!-- 商品查询 -->
     <el-form :inline="true" :model="query" ref="query" class="goods_query_form">
       <el-form-item prop="name">
@@ -89,17 +89,17 @@
         </el-table-column>
       </el-table>
     </el-dialog>
-  </Container>
+  </container>
 </template>
 
 <script>
-import Container from "../components/Container";
+import container from "../components/container";
 import {Delete, Edit, Plus, Search, WarningFilled} from "@element-plus/icons-vue";
 import {ElMessage} from "element-plus";
 
 export default {
   name: "Category",
-  components: {Container},
+  components: {container},
   setup() {
     return {Search, Plus, Edit, Delete, WarningFilled}
   },
@@ -201,7 +201,8 @@ export default {
       this.$axios.get('/category/list', {
         params: {
           name: this.query.name,
-          parentId: parentId
+          parentId: parentId,
+          sid: localStorage.getItem('sid')
         }
       }).then((response) => {
         if (parentId === 1){
@@ -224,7 +225,8 @@ export default {
           name: this.category.name,
           parentId: this.category.parentId,
           level: this.category.level,
-          sort: this.category.sort
+          sort: this.category.sort,
+          sid: localStorage.getItem('sid')
         }).then((response) => {
           if (response.data.code === 200) {
             ElMessage({message: response.data.message, type: 'success'})

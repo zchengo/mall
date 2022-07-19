@@ -1,5 +1,5 @@
 <template>
-  <Container>
+  <container>
     <!-- 商品查询 -->
     <el-form :inline="true" :model="query" ref="query" class="goods_query_form">
       <el-form-item prop="id">
@@ -149,17 +149,17 @@
         </span>
       </template>
     </el-dialog>
-  </Container>
+  </container>
 </template>
 
 <script>
 import {ArrowDown, ArrowUp, Brush, Delete, Edit, Plus, Search, Timer, WarningFilled} from "@element-plus/icons-vue";
 import {ElMessage} from 'element-plus'
-import Container from "../components/Container";
+import container from "../components/container";
 
 export default {
   name: "Goods",
-  components: {Container, Timer,},
+  components: {container, Timer,},
   setup() {
     return {Search, Brush, Plus, Edit, ArrowUp, ArrowDown, Delete, WarningFilled}
   },
@@ -223,6 +223,7 @@ export default {
   mounted() {
     this.getGoodsList()
     this.token = localStorage.getItem('token')
+    this.goodsDialogVisible = this.$route.params.dialog
   },
   methods: {
 
@@ -298,7 +299,8 @@ export default {
           categoryId: this.query.categoryId[1],
           status: this.query.status,
           pageNum: this.pageNum,
-          pageSize: this.pageSize
+          pageSize: this.pageSize,
+          sid: parseInt(localStorage.getItem('sid'))
         }
       }).then((response) => {
         this.total = response.data.data.total;
@@ -340,7 +342,8 @@ export default {
               price: parseInt(this.goods.price),
               quantity: parseInt(this.goods.quantity),
               imageUrl: this.goods.imageUrl,
-              remark: this.goods.remark
+              remark: this.goods.remark,
+              sid: parseInt(localStorage.getItem('sid'))
             }).then((response) => {
               if (response.data.code === 200) {
                 ElMessage({message: response.data.message, type: 'success'})

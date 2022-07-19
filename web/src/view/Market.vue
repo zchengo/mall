@@ -1,5 +1,5 @@
 <template>
-  <Container>
+  <container>
     <!-- 活动查询 -->
     <el-form :inline="true" :model="query" ref="query" class="goods_query_form">
       <el-form-item prop="id">
@@ -188,17 +188,17 @@
         </span>
       </template>
     </el-dialog>
-  </Container>
+  </container>
 </template>
 
 <script>
-import Container from "@/components/Container";
+import container from "@/components/container";
 import {Brush, Minus, Plus, Search, Timer, WarningFilled} from "@element-plus/icons-vue";
 import {ElMessage} from "element-plus";
 
 export default {
   name: "Market",
-  components: {Container, Timer},
+  components: {container, Timer},
   setup() {
     return {Search, Brush, Plus, Minus, WarningFilled}
   },
@@ -331,7 +331,8 @@ export default {
           type: this.query.type,
           status: this.query.status,
           pageNum: this.pageNum,
-          pageSize: this.pageSize
+          pageSize: this.pageSize,
+          sid: parseInt(localStorage.getItem('sid'))
         }
       }).then((response) => {
         this.total = response.data.data.total;
@@ -425,7 +426,8 @@ export default {
               bannerImage: this.market.bannerImage,
               beginTime: this.market.beginTime,
               overTime: this.market.overTime,
-              goodsIds: this.market.goodsIds
+              goodsIds: this.market.goodsIds,
+              sid: parseInt(localStorage.getItem('sid'))
             }).then((response) => {
               if (response.data.code === 200) {
                 ElMessage({message: response.data.message, type: 'success'})
