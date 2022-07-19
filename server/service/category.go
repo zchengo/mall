@@ -21,6 +21,7 @@ func (c *WebCategoryService) Create(param web.CategoryCreateParam) int64 {
 		Level:    param.Level,
 		Sort:     param.Sort,
 		Created:  common.NowTime(),
+		Sid:      param.Sid,
 	}
 	return global.Db.Create(&category).RowsAffected
 }
@@ -50,6 +51,7 @@ func (g *WebCategoryService) GetList(param web.CategoryQueryParam) []web.Categor
 	query := &web.Category{
 		Name:     param.Name,
 		ParentId: param.ParentId,
+		Sid:      param.Sid,
 	}
 	categoryList := make([]web.CategoryList, 0)
 	global.Db.Table("category").Where(query).Find(&categoryList)
@@ -64,10 +66,10 @@ func (c *WebCategoryService) GetOption() (option []web.CategoryOption) {
 }
 
 // 获取商品类目选项
-func (c *AppCategoryService) GetOption() (option []app.CategoryOption) {
+func (c *AppCategoryService) GetOption(param app.CategoryQueryParam) (option []app.CategoryOption) {
 	categorys := make([]app.Category, 0)
 	categoryOptions := make([]app.CategoryOption, 0)
-	global.Db.Table("category").Where("level = 1").Find(&categorys)
+	global.Db.Table("category").Where("level = 1 and sid =?", param.Sid).Find(&categorys)
 	for _, item := range categorys {
 		option := app.CategoryOption{
 			Id:   item.Id,

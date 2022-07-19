@@ -11,6 +11,7 @@ type Order struct {
 	Status        int     `gorm:"status"` // 订单状态，1-待付款，2-已取消，3-已付款，4-配送中，5-已完成
 	Created       string  `gorm:"created"`
 	Updated       string  `gorm:"updated"`
+	Sid           uint64  `gorm:"sid"` // 店铺编号
 }
 
 // 订单更新参数模型
@@ -22,12 +23,14 @@ type OrderUpdateParam struct {
 // 订单提交参数模型
 type OrderSubmitParam struct {
 	OpenId string `form:"openId" json:"openId" binding:"required"`
+	Sid    uint64 `form:"sid" json:"sid" binding:"required,gt=0"`
 }
 
 // 订单查询参数模型
 type OrderQueryParam struct {
 	Type   int    `form:"type" json:"type"`
 	OpenId string `form:"openId" json:"openId"`
+	Sid    uint64 `form:"sid" binding:"required,gt=0"`
 }
 
 // 订单列表传输模型

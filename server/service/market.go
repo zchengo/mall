@@ -25,6 +25,7 @@ func (m *WebMarketService) Create(param web.MarketCreateParam) int64 {
 		OverTime:    param.OverTime,
 		GoodsIds:    param.GoodsIds,
 		Created:     common.NowTime(),
+		Sid:         param.Sid,
 	}
 	return global.Db.Create(&market).RowsAffected
 }
@@ -66,6 +67,7 @@ func (m *WebMarketService) GetList(param web.MarketQueryParam) ([]web.MarketList
 		Id:     param.Id,
 		Type:   param.Type,
 		Status: param.Status,
+		Sid:    param.Sid,
 	}
 	marketList := make([]web.MarketList, 0)
 	rows := common.RestPage(param.Page, "market", query, &marketList, &[]web.Market{})
@@ -90,8 +92,8 @@ func (m *WebMarketService) GetGoods(param web.MarketGoodsQueryParma) []web.Marke
 }
 
 // 获取钻石展位列表
-func (m *AppMarketService) GetBannerList() []app.BannerList {
+func (m *AppMarketService) GetBannerList(param app.BannerQueryParam) []app.BannerList {
 	bannerList := make([]app.BannerList, 0)
-	global.Db.Table("market").Where("status = 1").Find(&bannerList)
+	global.Db.Table("market").Where("status = 1 and sid =?", param.Sid).Find(&bannerList)
 	return bannerList
 }

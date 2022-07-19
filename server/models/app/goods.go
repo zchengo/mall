@@ -14,6 +14,7 @@ type Goods struct {
 	Status     uint    `gorm:"status"`      // 商品状态，1-出售中，2-仓库中
 	Created    string  `gorm:"created"`     // 创建时间
 	Updated    string  `gorm:"updated"`     // 更新时间
+	Sid        uint64  `gorm:"sid"`         // 店铺编号
 }
 
 // 商品详情参数模型
@@ -24,6 +25,7 @@ type GoodsInfoParam struct {
 // 商品列表参数模型
 type GoodsQueryParam struct {
 	CategoryId uint64 `form:"categoryId"`
+	Sid        uint64 `form:"sid" binding:"required,gt=0"`
 }
 
 // 商品搜索参数模型

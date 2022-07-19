@@ -12,6 +12,12 @@ type Market struct {
 	Status      int    `gorm:"status"`       // 状态，1-开启，2-关闭
 	Created     string `gorm:"created"`      // 创建时间
 	Updated     string `gorm:"updated"`      // 更新时间
+	Sid         uint64 `gorm:"sid"`          // 店铺编号
+}
+
+// 钻展列表查询参数模型
+type BannerQueryParam struct {
+	Sid uint64 `form:"sid" binding:"required,gt=0"`
 }
 
 // 钻展列表传输模型

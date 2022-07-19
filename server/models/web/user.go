@@ -23,6 +23,6 @@ type LoginParam struct {
 
 // 用户信息传输模型
 type UserInfo struct {
-	Uid   uint64 `json:"uid"`
+	Sid   uint64 `json:"sid"`
 	Token string `json:"token"`
 }

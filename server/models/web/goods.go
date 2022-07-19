@@ -16,6 +16,7 @@ type Goods struct {
 	Status     uint    `gorm:"status"`      // 商品状态，1-出售中，2-仓库中
 	Created    string  `gorm:"created"`     // 创建时间
 	Updated    string  `gorm:"updated"`     // 更新时间
+	Sid        uint64  `gorm:"sid"`         // 店铺编号
 }
 
 // 商品创建参数模型
@@ -27,6 +28,7 @@ type GoodsCreateParam struct {
 	Quantity   uint    `json:"quantity" binding:"required,gt=0"`
 	ImageUrl   string  `json:"imageUrl" binding:"required"`
 	Remark     string  `json:"remark"`
+	Sid        uint64  `json:"sid" binding:"required,gt=0"`
 }
 
 // 商品删除参数模型
@@ -59,6 +61,7 @@ type GoodsListParam struct {
 	CategoryId uint64 `form:"categoryId"`
 	Title      string `form:"title"`
 	Status     uint   `form:"status"`
+	Sid        uint64 `form:"sid" binding:"required,gt=0"`
 }
 
 // 商品列表传输模型

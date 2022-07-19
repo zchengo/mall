@@ -13,6 +13,7 @@ type Order struct {
 	Status        int     `gorm:"status"` // 订单状态，1-待付款，2-已取消，3-已付款，4-配送中，5-已完成
 	Created       string  `gorm:"created"`
 	Updated       string  `gorm:"updated"`
+	Sid           uint64  `gorm:"sid"` // 店铺编号
 }
 
 // 订单删除参数模型
@@ -31,6 +32,7 @@ type OrderListParam struct {
 	Page   models.Page
 	Id     uint64 `form:"id"`
 	Status int    `form:"status"`
+	Sid    uint64 `form:"sid" binding:"required,gt=0"`
 }
 
 // 订单列表查询参数模型

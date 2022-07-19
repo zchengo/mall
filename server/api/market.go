@@ -1,11 +1,13 @@
 package api
 
 import (
-	"github.com/gin-gonic/gin"
 	"imall/constant"
+	"imall/models/app"
 	"imall/models/web"
 	"imall/response"
 	"imall/service"
+
+	"github.com/gin-gonic/gin"
 )
 
 type WebMarket struct {
@@ -97,6 +99,11 @@ func (m *WebMarket) GetMarketGoods(context *gin.Context) {
 }
 
 func (m *AppMarket) GetBanners(context *gin.Context) {
-	bannerList := m.GetBannerList()
+	var param app.BannerQueryParam
+	if err := context.ShouldBind(&param); err != nil {
+		response.Failed(constant.ParamInvalid, context)
+		return
+	}
+	bannerList := m.GetBannerList(param)
 	response.Success(constant.Selected, bannerList, context)
 }

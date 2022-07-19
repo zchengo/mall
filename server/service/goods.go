@@ -26,6 +26,7 @@ func (g *WebGoodsService) Create(param web.GoodsCreateParam) int64 {
 		Remark:     param.Remark,
 		Status:     1,
 		Created:    common.NowTime(),
+		Sid:        param.Sid,
 	}
 	return global.Db.Create(&goods).RowsAffected
 }
@@ -67,6 +68,7 @@ func (g *WebGoodsService) GetList(param web.GoodsListParam) ([]web.GoodsList, in
 		CategoryId: param.CategoryId,
 		Title:      param.Title,
 		Status:     param.Status,
+		Sid:        param.Sid,
 	}
 	goodsList := make([]web.GoodsList, 0)
 	rows := common.RestPage(param.Page, "goods", query, &goodsList, &[]web.Goods{})
@@ -78,14 +80,14 @@ func (g *AppGoodsService) GetList(param app.GoodsQueryParam) []app.GoodsList {
 	// 查询分类列表
 	categoryList := make([]app.Category, 0)
 	cids := make([]uint64, 0)
-    global.Db.Table("category").Where("parent_id = ?", param.CategoryId).Find(&categoryList)
+	global.Db.Table("category").Where("parent_id = ?", param.CategoryId).Find(&categoryList)
 	for _, c := range categoryList {
 		cids = append(cids, c.Id)
 	}
 
 	// 根据分类编号查询商品
 	goodsList := make([]app.GoodsList, 0)
-	global.Db.Table("goods").Where("category_id in ? and status = 1", cids).Find(&goodsList)
+	global.Db.Table("goods").Where("category_id in ? and status = 1 and sid = ?", cids, param.Sid).Find(&goodsList)
 	return goodsList
 }
 

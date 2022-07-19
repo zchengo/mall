@@ -9,6 +9,12 @@ type Category struct {
 	Sort     uint   `gorm:"sort"`       // 类目排序
 	Created  string `gorm:"created"`    // 创建时间
 	Updated  string `gorm:"updated"`    // 更新时间
+	Sid      uint64 `gorm:"sid"`        // 店铺编号
+}
+
+// 类目选项查询参数模型
+type CategoryQueryParam struct {
+	Sid uint64 `form:"sid" binding:"required,gt=0"`
 }
 
 // 商品类目选项传输模型

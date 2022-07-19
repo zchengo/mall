@@ -50,7 +50,7 @@ func (u *WebUser) UserLogin(c *gin.Context) {
 	if uid > 0 {
 		token, _ := common.GenerateToke(param.Username)
 		userInfo := web.UserInfo{
-			Uid:   uid,
+			Sid:   uid,
 			Token: token,
 		}
 		response.Success("登录成功", userInfo, c)

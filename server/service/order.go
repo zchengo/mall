@@ -37,6 +37,7 @@ func (o *WebOrderService) GetList(param web.OrderListParam) ([]web.OrderList, in
 	query := &web.Order{
 		Id:     param.Id,
 		Status: param.Status,
+		Sid:    param.Sid,
 	}
 	rows := common.RestPage(param.Page, "order", query, &orders, &[]web.Order{})
 	orderList := make([]web.OrderList, 0)
@@ -160,6 +161,7 @@ func (o *AppOrderService) Submit(param app.OrderSubmitParam) int64 {
 		AddressId:     addressId,
 		OpenId:        param.OpenId,
 		Created:       common.NowTime(),
+		Sid:           param.Sid,
 	}
 	rowsAffected := global.Db.Create(&order).RowsAffected
 	if rowsAffected > 0 {
@@ -177,9 +179,9 @@ func (o *AppOrderService) GetList(param app.OrderQueryParam) []app.OrderList {
 	// 根据订单状态查询订单
 	orders := make([]app.Order, 0)
 	if param.Type == 1 {
-		global.Db.Table("order").Where("status != ?", 5).Find(&orders)
+		global.Db.Table("order").Where("status != ? and sid = ?", 5, param.Sid).Find(&orders)
 	} else {
-		global.Db.Table("order").Where("status = ?", 5).Find(&orders)
+		global.Db.Table("order").Where("status = ? and sid = ?", 5, param.Sid).Find(&orders)
 	}
 
 	// 组装订单列表
