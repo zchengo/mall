@@ -3,6 +3,9 @@ import { createStore } from 'vuex'
 const store = createStore({
     state() {
         return {
+            
+            // 默认激活
+            defaultActive: '/index',
 
             // 动态导航
             navigation: [{
@@ -15,6 +18,9 @@ const store = createStore({
         }
     },
     mutations: {
+        setMenu(state, index){
+            state.defaultActive = index
+        },
         addNav(state, item) {
             state.navigation = item
         },
