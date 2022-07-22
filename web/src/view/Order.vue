@@ -77,16 +77,16 @@
     </div>
     <!-- 查看订单详情，对话框 -->
     <el-dialog :title="dialogTitle" v-model="orderDialogVisible" top="5vh" width="50%">
-      <Descriptions label="订单编号">{{orderDetail.id}}</Descriptions>
-      <Descriptions label="订单状态">
+      <descriptions label="订单编号">{{orderDetail.id}}</descriptions>
+      <descriptions label="订单状态">
         <el-tag v-if="orderDetail.status === 1" size="small" type="warning">待付款</el-tag>
         <el-tag v-if="orderDetail.status === 2" size="small" type="info">已取消</el-tag>
         <el-tag v-if="orderDetail.status === 3" size="small" type="success">已付款</el-tag>
         <el-tag v-if="orderDetail.status === 4" size="small" type="primary">配送中</el-tag>
         <el-tag v-if="orderDetail.status === 5" size="small" type="success">已完成</el-tag>
-      </Descriptions>
-      <Descriptions label="支付金额">{{orderDetail.totalPrice}}</Descriptions>
-      <Descriptions label="商品列表">
+      </descriptions>
+      <descriptions label="支付金额">{{orderDetail.totalPrice}}</descriptions>
+      <descriptions label="商品列表">
         <el-table :data="orderDetail.goodsItem" style="width: 100%">
           <el-table-column prop="name" label="主图" width="60">
             <template #default="scope">
@@ -104,11 +104,11 @@
             <template #default="scope">x {{scope.row.count}}</template>
           </el-table-column>
         </el-table>
-      </Descriptions>
-      <Descriptions label="收货人姓名">{{orderDetail.name}}</Descriptions>
-      <Descriptions label="手机号">{{orderDetail.mobile}}</Descriptions>
-      <Descriptions label="收货地址">{{orderDetail.province + ' ' + orderDetail.city + ' ' + orderDetail.district +
-      ' ' + orderDetail.detailedAddress }}</Descriptions>
+      </descriptions>
+      <descriptions label="收货人姓名">{{orderDetail.name}}</descriptions>
+      <descriptions label="手机号">{{orderDetail.mobile}}</descriptions>
+      <descriptions label="收货地址">{{orderDetail.province + ' ' + orderDetail.city + ' ' + orderDetail.district +
+      ' ' + orderDetail.detailedAddress }}</descriptions>
       <descriptions label="创建时间">{{orderDetail.created}}</descriptions>
       <template #footer>
         <span class="dialog-footer">
