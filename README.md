@@ -4,6 +4,12 @@
 
 imall 是一个本地生活服务类商城，包括微信小程序、商家后台、服务端。
 
+### 项目演示
+
+商城后台演示：https://www.zimall.site
+
+小程序商城演示：暂不支持，因个人主体小程序未开放电商相关类目，审核未通过😭
+
 ### 技术选型
 
 | 技术 | 说明 | 相关文档 |
@@ -20,7 +26,6 @@ imall 是一个本地生活服务类商城，包括微信小程序、商家后�
 | captcha | 验证码生成器 | https://github.com/mojocn/base64Captcha |
 | viper | 配置管理 | https://github.com/spf13/viper |
 | redis | 数据缓存 | https://github.com/go-redis/redis |
-| elasticsearch | 搜索引擎 | https://github.com/olivere/elastic |
 
 ### 项目结构
 ```
@@ -44,7 +49,6 @@ imall
 | go | >= 1.17.1 | https://golang.google.cn/dl/ |
 | mysql | >= 8.0.28 | https://www.mysql.com/downloads/ |
 | redis | >= 6.0.16 | https://redis.io/download/ |
-| elasticsearch | >= 7.14.0 | https://www.elastic.co/cn/downloads/elasticsearch |
 | node | >= 14.13.1 | https://nodejs.org/en/download/ |
 
 直接下载压缩包，或使用 Git 克隆项目：
@@ -97,23 +101,16 @@ $ npm install
 
 | | | |
 |---|---|---|
-| ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/w1.png) | ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/w2.png) | ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/w3.png) |
-| ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/w4.png) | ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/w5.png) | ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/w6.png) |
+| ![](https://github.com/zchengo/imall/blob/main/demo/res/w1.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/w2.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/w3.png) |
+| ![](https://github.com/zchengo/imall/blob/main/demo/res/w4.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/w5.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/w6.png) |
 
 小程序商城：
 
 | | | | | | |
 |---|---|---|---|---|---|
-| ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/a1.png) | ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/a2.png) | ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/a3.png) | ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/a4.png) | ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/a5.png) | ![Not Found](https://github.com/zchengo/imall/blob/main/demo/res/a6.png) |
+| ![](https://github.com/zchengo/imall/blob/main/demo/res/a1.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a2.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a3.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a4.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a5.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a6.png) |
 
 说明：以上演示图片素材来源于网络，部分图标来源 [www.iconfont.cn](https://www.iconfont.cn) ，图片、图标仅供学习使用。
-
-**运行结果图片加载不出来吗？**
-
-使用梯子翻墙，或者在自己的电脑中，使用 vim 命令打开 /etc/hosts ，添加以下信息：
-```
-185.199.108.133 raw.githubusercontent.com
-```
 
 ### 问题反馈
 
