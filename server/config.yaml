@@ -17,6 +17,10 @@ upload:
 jwt:
   signingKey: z3d6k8v0n3w7m9sa1fd0u09h
 
+# 定时任务
+cron:
+  enable: true
+
 # 微信小程序配置
 code2Session:
   appId: wx3cb7b0s2793390f63
