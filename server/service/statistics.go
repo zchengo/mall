@@ -1,7 +1,6 @@
 package service
 
 import (
-	"fmt"
 	"imall/common"
 	"imall/global"
 	"imall/models/web"
@@ -28,7 +27,7 @@ func (s *WebStatisticsService) TodayData(param web.DataParam) web.TodayDate {
 	global.Db.Table("order").Where(ras, param.Sid, day).Find(&web.Order{}).Count(&orderDate.InDelivery)
 	global.Db.Table("order").Where(pds, param.Sid, day).Find(&web.Order{}).Count(&orderDate.Canceled)
 	global.Db.Table("order").Where(fds, param.Sid, day).Find(&web.Order{}).Count(&orderDate.Finished)
-	global.Db.Table("order").Where(pas, param.Sid, day).Pluck("total_price", &orderDate.PayAmount)
+	global.Db.Table("order").Where(pas, param.Sid, day).Pluck("sum(total_price) as pay_amount", &orderDate.PayAmount)
 	return orderDate
 }
 
@@ -44,7 +43,6 @@ func (s *WebStatisticsService) OrderData(param web.DataParam) web.OrderData {
 			hs = strconv.Itoa(hour)
 		}
 		cond := today[:10] + " " + hs + "%"
-		fmt.Println(cond)
 		global.Db.Table("order").Where("sid = ? and created like ?", param.Sid, cond).Count(&orders.Orders[i])
 		hour = hour + 1
 	}
