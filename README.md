@@ -8,8 +8,6 @@ imall 是一个本地生活服务类商城，包括微信小程序、商家后�
 
 商城后台演示：https://www.zimall.site
 
-小程序商城演示：暂不支持，因个人主体小程序未开放电商相关类目，审核未通过😭
-
 ### 技术选型
 
 | 技术 | 说明 | 相关文档 |
@@ -31,7 +29,6 @@ imall 是一个本地生活服务类商城，包括微信小程序、商家后�
 ```
 imall
   ├── app         // 微信小程序
-  ├── demo        // 演示资源
   ├── server      // 服务端
   ├── web         // 商家后台
   ├── ...         // 其他
@@ -115,12 +112,6 @@ $ npm install
 ### 问题反馈
 
 在使用过程中遇到问题，你可以提交 Issues ，也可以 [知乎私信作者](https://www.zhihu.com/people/87-4-8-5) 或 [CSDN私信作者](https://blog.csdn.net/m0_47890251?spm=1000.2115.3001.5343)
-
-### 打赏作者
-
-使用微信扫描下方赞赏码，可以给作者打赏。
-
-<img width="200" height="200" src="https://github.com/zchengo/imall/blob/main/demo/rw/reward.jpg" />
 
 ### 许可证
 
