@@ -4,7 +4,7 @@ import (
 	"github.com/go-redis/redis/v8"
 	"github.com/olivere/elastic/v7"
 	"gorm.io/gorm"
-	"imall/config"
+	"mall/config"
 )
 
 var (

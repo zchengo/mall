@@ -3,8 +3,8 @@ package service
 import (
 	"crypto/tls"
 	"fmt"
-	"imall/global"
-	"imall/models/web"
+	"mall/global"
+	"mall/models/web"
 
 	"gopkg.in/gomail.v2"
 )

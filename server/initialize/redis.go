@@ -2,7 +2,7 @@ package initialize
 
 import (
 	"github.com/go-redis/redis/v8"
-	"imall/global"
+	"mall/global"
 )
 
 func Redis() {

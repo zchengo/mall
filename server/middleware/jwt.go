@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"github.com/gin-gonic/gin"
-	"imall/common"
-	"imall/response"
+	"mall/common"
+	"mall/response"
 )
 
 // JwtAuth JWT认证中间件

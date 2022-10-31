@@ -1,6 +1,6 @@
 package web
 
-import "imall/models"
+import "mall/models"
 
 // 营销数据映射模型
 type Market struct {

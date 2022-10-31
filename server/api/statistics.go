@@ -2,10 +2,10 @@ package api
 
 import (
 	"fmt"
-	"imall/constant"
-	"imall/models/web"
-	"imall/response"
-	"imall/service"
+	"mall/constant"
+	"mall/models/web"
+	"mall/response"
+	"mall/service"
 
 	"github.com/gin-gonic/gin"
 )

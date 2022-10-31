@@ -1,11 +1,11 @@
 package api
 
 import (
-	"imall/constant"
-	"imall/models/app"
-	"imall/models/web"
-	"imall/response"
-	"imall/service"
+	"mall/constant"
+	"mall/models/app"
+	"mall/models/web"
+	"mall/response"
+	"mall/service"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,6 +1,6 @@
 package web
 
-import "imall/models"
+import "mall/models"
 
 // 商品映射模型
 type Goods struct {

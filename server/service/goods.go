@@ -1,10 +1,10 @@
 package service
 
 import (
-	"imall/common"
-	"imall/global"
-	"imall/models/app"
-	"imall/models/web"
+	"mall/common"
+	"mall/global"
+	"mall/models/app"
+	"mall/models/web"
 	"strings"
 )
 

@@ -1,6 +1,6 @@
 package main
 
-import "imall/initialize"
+import "mall/initialize"
 
 func main() {
 	initialize.Run()

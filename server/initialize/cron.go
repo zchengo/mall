@@ -1,11 +1,11 @@
 package initialize
 
 import (
-	"imall/common"
-	"imall/global"
-	"imall/models/app"
-	"imall/models/web"
-	"imall/service"
+	"mall/common"
+	"mall/global"
+	"mall/models/app"
+	"mall/models/web"
+	"mall/service"
 	"math/rand"
 	"time"
 )

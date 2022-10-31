@@ -1,6 +1,6 @@
 package web
 
-import "imall/models"
+import "mall/models"
 
 // 数据库，订单数据映射模型
 type Order struct {

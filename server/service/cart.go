@@ -1,8 +1,8 @@
 package service
 
 import (
-	"imall/global"
-	"imall/models/app"
+	"mall/global"
+	"mall/models/app"
 	"strconv"
 	"strings"
 )

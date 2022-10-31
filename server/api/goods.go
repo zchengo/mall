@@ -2,11 +2,11 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"imall/constant"
-	"imall/models/app"
-	"imall/models/web"
-	"imall/response"
-	"imall/service"
+	"mall/constant"
+	"mall/models/app"
+	"mall/models/web"
+	"mall/response"
+	"mall/service"
 )
 
 type WebGoods struct {

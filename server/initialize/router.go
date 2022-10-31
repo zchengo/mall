@@ -2,9 +2,9 @@ package initialize
 
 import (
 	"fmt"
-	"imall/api"
-	"imall/global"
-	"imall/middleware"
+	"mall/api"
+	"mall/global"
+	"mall/middleware"
 	"net/http"
 
 	"github.com/gin-gonic/gin"

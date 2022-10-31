@@ -2,10 +2,10 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"imall/constant"
-	"imall/models/app"
-	"imall/response"
-	"imall/service"
+	"mall/constant"
+	"mall/models/app"
+	"mall/response"
+	"mall/service"
 )
 
 type AppAddress struct {

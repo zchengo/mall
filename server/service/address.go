@@ -1,9 +1,9 @@
 package service
 
 import (
-	"imall/common"
-	"imall/global"
-	"imall/models/app"
+	"mall/common"
+	"mall/global"
+	"mall/models/app"
 )
 
 type AppAddressService struct {

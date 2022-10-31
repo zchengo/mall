@@ -2,7 +2,7 @@ package initialize
 
 import (
 	"fmt"
-	"imall/global"
+	"mall/global"
 
 	"github.com/spf13/viper"
 )
