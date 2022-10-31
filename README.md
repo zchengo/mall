@@ -1,8 +1,8 @@
-# imall
+# mall
 
 ### 简介
 
-imall 是一个本地生活服务类商城，包括微信小程序、商家后台、服务端。
+mall 是一个本地生活服务类商城，包括微信小程序、商家后台、服务端。
 
 ### 项目演示
 
@@ -27,7 +27,7 @@ imall 是一个本地生活服务类商城，包括微信小程序、商家后�
 
 ### 项目结构
 ```
-imall
+mall
   ├── app         // 微信小程序
   ├── server      // 服务端
   ├── web         // 商家后台
@@ -50,7 +50,7 @@ imall
 
 直接下载压缩包，或使用 Git 克隆项目：
 ```
-$ git clone https://github.com/zchengo/imall.git
+$ git clone https://github.com/zchengo/mall.git
 ```
 
 **部署一：Go服务端（server）**
@@ -92,27 +92,10 @@ $ npm install
 
 在微信开发者工具右上角->【详情】->【本地设置】-> 选择【使用npm模块】和【不校验合法域名，web-view（业务域名）、TLS版本...】。最后，在微信开发者工具的工具栏->【工具】->【构建npm】。
 
-**运行结果**
-
-商家后台：
-
-| | | |
-|---|---|---|
-| ![](https://github.com/zchengo/imall/blob/main/demo/res/w1.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/w2.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/w3.png) |
-| ![](https://github.com/zchengo/imall/blob/main/demo/res/w4.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/w5.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/w6.png) |
-
-小程序商城：
-
-| | | | | | |
-|---|---|---|---|---|---|
-| ![](https://github.com/zchengo/imall/blob/main/demo/res/a1.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a2.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a3.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a4.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a5.png) | ![](https://github.com/zchengo/imall/blob/main/demo/res/a6.png) |
-
-说明：以上演示图片素材来源于网络，部分图标来源 [www.iconfont.cn](https://www.iconfont.cn) ，图片、图标仅供学习使用。
-
 ### 问题反馈
 
 在使用过程中遇到问题，你可以提交 Issues ，也可以 [知乎私信作者](https://www.zhihu.com/people/87-4-8-5) 或 [CSDN私信作者](https://blog.csdn.net/m0_47890251?spm=1000.2115.3001.5343)
 
 ### 许可证
 
-[MIT License](https://github.com/zchengo/imall/blob/main/LICENSE) Copyright (c) 2022 zchengo
+[MIT License](https://github.com/zchengo/mall/blob/main/LICENSE) Copyright (c) 2022 zchengo
